@@ -110,6 +110,66 @@ def test_read_locations_with_data():
     assert data[0]["MaterialID"] == "MAT002"
     assert data[1]["MaterialID"] == "MAT003"
 
+def test_read_locations_with_server_side_filtering():
+    # Populate with distinct data
+    client.post("/locations/", json={"MaterialID": "FILTER01", "TrayNumber": "F01", "ProcessID": "PROC_A"})
+    client.post("/locations/", json={"MaterialID": "FILTER01", "TrayNumber": "F02", "ProcessID": "PROC_B"})
+    client.post("/locations/", json={"MaterialID": "FILTER02", "TrayNumber": "F01", "ProcessID": "PROC_C"})
+    client.post("/locations/", json={"MaterialID": "FILTER03", "TrayNumber": "F03", "ProcessID": "PROC_A"})
+
+    # Test filter by MaterialID
+    response_mat = client.get("/locations/?material_id=FILTER01")
+    assert response_mat.status_code == 200
+    data_mat = response_mat.json()
+    assert len(data_mat) == 2
+    assert all(item["MaterialID"] == "FILTER01" for item in data_mat)
+    # Check if F01 and F02 are present
+    tray_numbers_mat = {item["TrayNumber"] for item in data_mat}
+    assert "F01" in tray_numbers_mat
+    assert "F02" in tray_numbers_mat
+
+
+    # Test filter by TrayNumber
+    response_tray = client.get("/locations/?tray_number=F01")
+    assert response_tray.status_code == 200
+    data_tray = response_tray.json()
+    assert len(data_tray) == 2
+    assert all(item["TrayNumber"] == "F01" for item in data_tray)
+    # Check if FILTER01 and FILTER02 are present
+    material_ids_tray = {item["MaterialID"] for item in data_tray}
+    assert "FILTER01" in material_ids_tray
+    assert "FILTER02" in material_ids_tray
+
+
+    # Test filter by both MaterialID and TrayNumber (unique result)
+    response_both = client.get("/locations/?material_id=FILTER01&tray_number=F02")
+    assert response_both.status_code == 200
+    data_both = response_both.json()
+    assert len(data_both) == 1
+    assert data_both[0]["MaterialID"] == "FILTER01"
+    assert data_both[0]["TrayNumber"] == "F02"
+    assert data_both[0]["ProcessID"] == "PROC_B"
+
+    # Test filter by both MaterialID and TrayNumber (no result)
+    response_no_result = client.get("/locations/?material_id=FILTER01&tray_number=F03_NONEXISTENT")
+    assert response_no_result.status_code == 200
+    assert response_no_result.json() == []
+
+    # Test filter with parameters that yield no results
+    response_non_existent_mat = client.get("/locations/?material_id=NON_EXISTENT_MAT")
+    assert response_non_existent_mat.status_code == 200
+    assert response_non_existent_mat.json() == []
+
+    # Test fetching all (no filter params) - should still work (implicitly tested by test_read_locations_with_data)
+    # but let's ensure it still gets all 4 + any from previous tests if state leaked (it shouldn't due to cleanup)
+    # This test assumes a clean state due to `setup_test_database_tables` fixture.
+    # So, it should only find the 4 records created in this test.
+    all_response = client.get("/locations/")
+    assert all_response.status_code == 200
+    all_data = all_response.json()
+    assert len(all_data) == 4 # Ensure only records from this test are present due to per-test cleanup
+
+
 def test_read_specific_location():
     create_response = client.post("/locations/", json={"MaterialID": "MAT004", "TrayNumber": "T04"})
     location_id = create_response.json()["LocationID"]
@@ -342,3 +402,50 @@ def test_batch_clear_non_existent_only():
     response = client.post("/locations/batch-clear/", json={"LocationIDs": [88888, 99999]})
     assert response.status_code == 200
     assert response.json() == [] # No locations were found to clear
+
+# --- Tests for Clear by MaterialID and TrayNumber ---
+def test_clear_location_by_material_tray_success():
+    # Create a record to be cleared
+    client.post("/locations/", json={"MaterialID": "CLEAR_MAT01", "TrayNumber": "CLEAR_TRAY01", "StatusNotes": "To be cleared"})
+
+    # Clear it by MaterialID and TrayNumber
+    clear_payload = {"MaterialID": "CLEAR_MAT01", "TrayNumber": "CLEAR_TRAY01"}
+    response = client.post("/locations/clear-by-material-tray/", json=clear_payload)
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["MaterialID"] == "" # MaterialID should be cleared
+    assert data["TrayNumber"] == "CLEAR_TRAY01" # TrayNumber should remain
+    assert data["StatusNotes"] == "To be cleared" # Other fields should remain
+    original_timestamp = data["Timestamp"] # Get timestamp of cleared record
+
+    # Verify in DB (optional, but good check)
+    # Use GET /locations with filters to find it
+    verify_response = client.get(f"/locations/?material_id=&tray_number=CLEAR_TRAY01")
+    assert verify_response.status_code == 200
+    verify_data = verify_response.json()
+    assert len(verify_data) == 1
+    assert verify_data[0]["MaterialID"] == ""
+    assert verify_data[0]["LocationID"] == data["LocationID"]
+    assert verify_data[0]["Timestamp"] == original_timestamp # Timestamp should be the one from the clear operation response
+
+def test_clear_location_by_material_tray_not_found():
+    # Attempt to clear a non-existent record
+    clear_payload = {"MaterialID": "NON_EXISTENT_MAT", "TrayNumber": "NON_EXISTENT_TRAY"}
+    response = client.post("/locations/clear-by-material-tray/", json=clear_payload)
+
+    assert response.status_code == 404
+    assert response.json() == {"detail": "Record not found with specified MaterialID and TrayNumber"}
+
+def test_clear_location_by_material_tray_empty_payload():
+    # Test with empty payload (should fail validation by Pydantic model ClearByMaterialTrayRequest)
+    response = client.post("/locations/clear-by-material-tray/", json={})
+    assert response.status_code == 422 # Unprocessable Entity due to Pydantic validation
+
+def test_clear_location_by_material_tray_partial_payload_material_id():
+    response = client.post("/locations/clear-by-material-tray/", json={"MaterialID": "PARTIAL_MAT"})
+    assert response.status_code == 422
+
+def test_clear_location_by_material_tray_partial_payload_tray_number():
+    response = client.post("/locations/clear-by-material-tray/", json={"TrayNumber": "PARTIAL_TRAY"})
+    assert response.status_code == 422

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, Query, Response
 from typing import List, Optional
 import logging
 from datetime import datetime
@@ -47,10 +47,19 @@ async def create_location(location: models.MaterialLocationCreate):
     return db_location
 
 @app.get("/locations/", response_model=List[models.MaterialLocation])
-async def read_locations(skip: int = 0, limit: int = 100):
-    logger.info(f"Received request to read locations: skip={skip}, limit={limit}")
-    locations = database.get_material_locations(skip=skip, limit=limit)
-    logger.info(f"Found {len(locations)} locations.")
+async def read_locations(
+    material_id: Optional[str] = Query(None, description="Filter by Material ID"),
+    tray_number: Optional[str] = Query(None, description="Filter by Tray Number"),
+    skip: int = Query(0, ge=0),
+    limit: int = Query(100, ge=1, le=1000) # Added Query for skip/limit too for consistency
+):
+    logger.info(
+        f"Received request to read locations: MaterialID='{material_id}', TrayNumber='{tray_number}', Skip={skip}, Limit={limit}"
+    )
+    locations = database.get_material_locations(
+        material_id=material_id, tray_number=tray_number, skip=skip, limit=limit
+    )
+    logger.info(f"Found {len(locations)} locations matching criteria.")
     return locations
 
 @app.get("/locations/{location_id}", response_model=models.MaterialLocation)
@@ -81,10 +90,10 @@ async def delete_location(location_id: int):
         logger.warning(f"Location with ID {location_id} not found for deletion.")
         raise HTTPException(status_code=404, detail="Location not found")
     logger.info(f"Successfully deleted location ID {location_id}")
-    return Response(status_code=204) # FastAPI expects a Response for 204
+    return Response(status_code=204)
 
 @app.post("/locations/batch-update/", response_model=List[models.MaterialLocation])
-async def batch_update_locations(request: models.BatchUpdateRequest):
+async def batch_update_locations(request: models.BatchUpdateRequest): # No db: Session here
     logger.info(f"Received request for batch update: {len(request.updates)} items.")
     updated_locations = []
     for item in request.updates:
@@ -123,8 +132,21 @@ async def batch_clear_locations(request: models.BatchClearLocationRequest):
     logger.info(f"Batch clear processed. {len(cleared_locations)} locations cleared.")
     return cleared_locations
 
-# Need to import Response for 204 status code
-from fastapi import Response
+@app.post("/locations/clear-by-material-tray/", response_model=models.MaterialLocation)
+async def clear_item_by_material_tray(item_data: models.ClearByMaterialTrayRequest):
+    logger.info(f"Received request to clear location by MaterialID='{item_data.MaterialID}', TrayNumber='{item_data.TrayNumber}'")
+    cleared_record = database.clear_location_by_material_tray(
+        material_id=item_data.MaterialID,
+        tray_number=item_data.TrayNumber
+    )
+    if cleared_record is None:
+        logger.warning(f"Record not found for MaterialID='{item_data.MaterialID}', TrayNumber='{item_data.TrayNumber}' for clearing.")
+        raise HTTPException(status_code=404, detail="Record not found with specified MaterialID and TrayNumber")
+
+    logger.info(f"Successfully cleared record: {cleared_record.model_dump()}")
+    return cleared_record
+
+# Query and Response are now imported at the top.
 # Add uvicorn runner for local testing if needed.
 # if __name__ == "__main__":
 # import uvicorn

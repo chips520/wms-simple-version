@@ -37,3 +37,7 @@ class ClearLocationRequest(BaseModel):
 
 class BatchClearLocationRequest(BaseModel):
     LocationIDs: List[int]
+
+class ClearByMaterialTrayRequest(BaseModel):
+    MaterialID: str
+    TrayNumber: str

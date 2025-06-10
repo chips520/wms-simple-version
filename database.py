@@ -43,13 +43,32 @@ def create_material_location(location: MaterialLocationCreate) -> MaterialLocati
     conn.close()
     return MaterialLocation(LocationID=location_id, Timestamp=timestamp, **location.model_dump())
 
-def get_material_locations(skip: int = 0, limit: int = 100) -> List[MaterialLocation]:
+def get_material_locations(material_id: Optional[str] = None, tray_number: Optional[str] = None, skip: int = 0, limit: int = 100) -> List[MaterialLocation]:
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM MaterialLocations LIMIT ? OFFSET ?", (limit, skip))
+
+    query = "SELECT * FROM MaterialLocations"
+    conditions = []
+    params = []
+
+    if material_id is not None:
+        conditions.append("MaterialID = ?")
+        params.append(material_id)
+
+    if tray_number is not None:
+        conditions.append("TrayNumber = ?")
+        params.append(tray_number)
+
+    if conditions:
+        query += " WHERE " + " AND ".join(conditions)
+
+    query += " LIMIT ? OFFSET ?"
+    params.extend([limit, skip])
+
+    cursor.execute(query, tuple(params))
     rows = cursor.fetchall()
     conn.close()
-    return [MaterialLocation(**row) for row in rows]
+    return [MaterialLocation(**dict(row)) for row in rows] # Ensure row is dict for pydantic
 
 def get_material_location(location_id: int) -> Optional[MaterialLocation]:
     conn = get_db_connection()
@@ -111,4 +130,40 @@ def clear_material_location(location_id: int) -> Optional[MaterialLocation]:
         return None
     conn.close()
     # Fetch the updated record to return it
+    return get_material_location(location_id)
+
+def clear_location_by_material_tray(material_id: str, tray_number: str) -> Optional[MaterialLocation]:
+    """Clears a location's MaterialID by MaterialID and TrayNumber, returning the updated record."""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    timestamp = datetime.utcnow()
+
+    # First, find the LocationID to ensure we can return the full record later
+    # And to check if the record exists and is unique for these criteria
+    # (Though MaterialID + TrayNumber should ideally be unique if not primary key)
+    cursor.execute("SELECT LocationID FROM MaterialLocations WHERE MaterialID = ? AND TrayNumber = ?", (material_id, tray_number))
+    row = cursor.fetchone()
+
+    if not row:
+        conn.close()
+        return None # Record not found
+
+    location_id = row["LocationID"]
+
+    # Now, update the record
+    cursor.execute("""
+        UPDATE MaterialLocations
+        SET MaterialID = '', Timestamp = ?
+        WHERE LocationID = ?
+    """, (timestamp, location_id))
+    conn.commit()
+
+    if cursor.rowcount == 0:
+        # This case should ideally not be reached if we found the LocationID just before,
+        # unless a concurrent modification happened.
+        conn.close()
+        return None
+
+    conn.close()
+    # Fetch and return the updated record using its LocationID
     return get_material_location(location_id)
