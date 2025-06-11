@@ -1,0 +1,322 @@
+# Simplified POT file for WMS Management App
+#
+msgid ""
+msgstr "[zh]
+"Project-Id-Version: management_app 1.0\n"
+"POT-Creation-Date: 2024-07-01 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically Generated\n"
+"Language-Team: None\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Manual Subtask\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "WMS Service Management"
+msgstr "[zh] MS Service Management
+
+msgid "Service Control"
+msgstr "[zh] ervice Control
+
+msgid "Status: Unknown"
+msgstr "[zh] tatus: Unknown
+
+msgid "Start Service"
+msgstr "[zh] tart Service
+
+msgid "Stop Service"
+msgstr "[zh] top Service
+
+msgid "Restart Service"
+msgstr "[zh] estart Service
+
+msgid "Enable Auto-start"
+msgstr "[zh] nable Auto-start
+
+msgid "Disable Auto-start"
+msgstr "[zh] isable Auto-start
+
+msgid "Service Host/Port Configuration"
+msgstr "[zh] ervice Host/Port Configuration
+
+msgid "Host IP Address:"
+msgstr "[zh] ost IP Address:
+
+msgid "Port Number:"
+msgstr "[zh] ort Number:
+
+msgid "Save Configuration"
+msgstr "[zh] ave Configuration
+
+msgid "Data Management"
+msgstr "[zh] ata Management
+
+msgid "Record Details"
+msgstr "[zh] ecord Details
+
+msgid "LocationID:"
+msgstr "[zh] ocationID:
+
+msgid "MaterialID:"
+msgstr "[zh] aterialID:
+
+msgid "TrayNumber:"
+msgstr "[zh] rayNumber:
+
+msgid "ProcessID:"
+msgstr "[zh] rocessID:
+
+msgid "TaskID:"
+msgstr "[zh] askID:
+
+msgid "StatusNotes:"
+msgstr "[zh] tatusNotes:
+
+msgid "Timestamp:"
+msgstr "[zh] imestamp:
+
+msgid "Add Record"
+msgstr "[zh] dd Record
+
+msgid "Update Selected Record"
+msgstr "[zh] pdate Selected Record
+
+msgid "Clear Form"
+msgstr "[zh] lear Form
+
+msgid "Query Locations"
+msgstr "[zh] uery Locations
+
+msgid "Query by MaterialID:"
+msgstr "[zh] uery by MaterialID:
+
+msgid "Query by TrayNumber:"
+msgstr "[zh] uery by TrayNumber:
+
+msgid "Search"
+msgstr "[zh] earch
+
+msgid "Query Results"
+msgstr "[zh] uery Results
+
+msgid "Loc. ID"
+msgstr "[zh] oc. ID
+
+msgid "Material ID"
+msgstr "[zh] aterial ID
+
+msgid "Tray No."
+msgstr "[zh] ray No.
+
+# Timestamp is also a column header, reusing
+# msgid "Timestamp"
+# msgstr ""
+
+msgid "Process ID"
+msgstr "[zh] rocess ID
+
+msgid "Task ID"
+msgstr "[zh] ask ID
+
+msgid "Status Notes"
+msgstr "[zh] tatus Notes
+
+msgid "Clear Location by Criteria"
+msgstr "[zh] lear Location by Criteria
+
+msgid "MaterialID for Clear:"
+msgstr "[zh] aterialID for Clear:
+
+msgid "TrayNumber for Clear:"
+msgstr "[zh] rayNumber for Clear:
+
+msgid "Clear by Mtrl+Tray"
+msgstr "[zh] lear by Mtrl+Tray
+
+msgid "Note: Clears record's MaterialID. Requires both MaterialID and TrayNumber."
+msgstr "[zh] ote: Clears record's MaterialID. Requires both MaterialID and TrayNumber.
+
+# Messagebox Titles
+msgid "Service Info"
+msgstr "[zh] ervice Info
+
+msgid "Error"
+msgstr "[zh] rror
+
+msgid "Service Control Error"
+msgstr "[zh] ervice Control Error
+
+msgid "Auto-start Error"
+msgstr "[zh] uto-start Error
+
+msgid "Auto-start Info"
+msgstr "[zh] uto-start Info
+
+msgid "Validation Error"
+msgstr "[zh] alidation Error
+
+msgid "Success"
+msgstr "[zh] uccess
+
+msgid "API Error"
+msgstr "[zh] PI Error
+
+msgid "Confirm Clear"
+msgstr "[zh] onfirm Clear
+
+msgid "Search Results"
+msgstr "[zh] earch Results
+
+msgid "Configuration Saved"
+msgstr "[zh] onfiguration Saved
+
+msgid "Save Error"
+msgstr "[zh] ave Error
+
+# Messagebox Messages (examples, especially formatted ones)
+msgid "Status: Running (PID: {pid_val})"
+msgstr "[zh] tatus: Running (PID: {pid_val})
+
+msgid "Status: Stopped"
+msgstr "[zh] tatus: Stopped
+
+msgid "Status: Error - {python_file} not found"
+msgstr "[zh] tatus: Error - {python_file} not found
+
+msgid "Status: Error starting"
+msgstr "[zh] tatus: Error starting
+
+msgid "Status: Stopped (Stale PID)"
+msgstr "[zh] tatus: Stopped (Stale PID)
+
+msgid "Status: Error (Invalid PID file)"
+msgstr "[zh] tatus: Error (Invalid PID file)
+
+msgid "Status: Stopped (PID file was empty)"
+msgstr "[zh] tatus: Stopped (PID file was empty)
+
+msgid "Status: Error checking PID"
+msgstr "[zh] tatus: Error checking PID
+
+msgid "Service is already running."
+msgstr "[zh] ervice is already running.
+
+msgid "{python_file} not found. Cannot start service."
+msgstr "[zh] python_file} not found. Cannot start service.
+
+msgid "WMS Service started successfully."
+msgstr "[zh] MS Service started successfully.
+
+msgid "Failed to start WMS service: {error}"
+msgstr "[zh] ailed to start WMS service: {error}
+
+msgid "Service PID not found, cannot stop if not started by this manager instance or PID file is missing/corrupt."
+msgstr "[zh] ervice PID not found, cannot stop if not started by this manager instance or PID file is missing/corrupt.
+
+msgid "Service is not recorded as running (empty PID file)."
+msgstr "[zh] ervice is not recorded as running (empty PID file).
+
+msgid "Service PID file is corrupt or unreadable."
+msgstr "[zh] ervice PID file is corrupt or unreadable.
+
+msgid "Service is not recorded as running."
+msgstr "[zh] ervice is not recorded as running.
+
+msgid "No valid PID found to stop the service."
+msgstr "[zh] o valid PID found to stop the service.
+
+msgid "WMS Service stopped successfully."
+msgstr "[zh] MS Service stopped successfully.
+
+msgid "Status: Stopped (taskkill error but process gone)"
+msgstr "[zh] tatus: Stopped (taskkill error but process gone)
+
+msgid "Failed to stop WMS service with taskkill: {error}. It might still be running."
+msgstr "[zh] ailed to stop WMS service with taskkill: {error}. It might still be running.
+
+msgid "Status: Error stopping"
+msgstr "[zh] tatus: Error stopping
+
+msgid "An unexpected error occurred while stopping WMS service: {error}"
+msgstr "[zh] n unexpected error occurred while stopping WMS service: {error}
+
+msgid "Task Scheduler command (schtasks) not found. Is this a Windows environment?"
+msgstr "[zh] ask Scheduler command (schtasks) not found. Is this a Windows environment?
+
+msgid "Failed to create helper batch script for auto-start: {error}"
+msgstr "[zh] ailed to create helper batch script for auto-start: {error}
+
+msgid "Auto-start enabled for WMS service via Task '{task_name}'."
+msgstr "[zh] uto-start enabled for WMS service via Task '{task_name}'.
+
+msgid "Failed to enable auto-start (schtasks error): {error}"
+msgstr "[zh] ailed to enable auto-start (schtasks error): {error}
+
+msgid "An unexpected error occurred while enabling auto-start: {error}"
+msgstr "[zh] n unexpected error occurred while enabling auto-start: {error}
+
+msgid "Auto-start disabled for WMS service."
+msgstr "[zh] uto-start disabled for WMS service.
+
+msgid "Auto-start task '{task_name}' was not found (already disabled)."
+msgstr "[zh] uto-start task '{task_name}' was not found (already disabled).
+
+msgid "Failed to disable auto-start (schtasks error): {error}"
+msgstr "[zh] ailed to disable auto-start (schtasks error): {error}
+
+msgid "An unexpected error occurred while disabling auto-start: {error}"
+msgstr "[zh] n unexpected error occurred while disabling auto-start: {error}
+
+msgid "Host IP address cannot be empty."
+msgstr "[zh] ost IP address cannot be empty.
+
+msgid "Port number must be an integer."
+msgstr "[zh] ort number must be an integer.
+
+msgid "Port number must be between 1 and 65535."
+msgstr "[zh] ort number must be between 1 and 65535.
+
+msgid "Configuration has been saved successfully.\n\nIf the WMS service is currently running, you may need to restart it for changes to its listening address or port to take full effect."
+msgstr "[zh] onfiguration has been saved successfully.\n\nIf the WMS service is currently running, you may need to restart it for changes to its listening address or port to take full effect.
+
+msgid "Failed to save configuration. Please check the logs for more details."
+msgstr "[zh] ailed to save configuration. Please check the logs for more details.
+
+msgid "Record added successfully. LocationID: {loc_id}"
+msgstr "[zh] ecord added successfully. LocationID: {loc_id}
+
+msgid "Failed to add record: {error}"
+msgstr "[zh] ailed to add record: {error}
+
+msgid "No record selected for update. LocationID is missing."
+msgstr "[zh] o record selected for update. LocationID is missing.
+
+msgid "Record {loc_id} updated successfully."
+msgstr "[zh] ecord {loc_id} updated successfully.
+
+msgid "Failed to update record {loc_id}: {error}"
+msgstr "[zh] ailed to update record {loc_id}: {error}
+
+msgid "Found {count} record(s)."
+msgstr "[zh] ound {count} record(s).
+
+msgid "Received unexpected data format from API."
+msgstr "[zh] eceived unexpected data format from API.
+
+msgid "Failed to search records: {error}"
+msgstr "[zh] ailed to search records: {error}
+
+msgid "Both MaterialID and TrayNumber are required to clear a record."
+msgstr "[zh] oth MaterialID and TrayNumber are required to clear a record.
+
+msgid "Are you sure you want to clear the record for Material ID: '{mat_id}' and Tray Number: '{tray_num}'?\nThis will mark the location as empty."
+msgstr "[zh] re you sure you want to clear the record for Material ID: '{mat_id}' and Tray Number: '{tray_num}'?\nThis will mark the location as empty.
+
+msgid "Record for MaterialID '{mat_id}', TrayNumber '{tray_num}' (LocationID: {loc_id}) cleared successfully."
+msgstr "[zh] ecord for MaterialID '{mat_id}', TrayNumber '{tray_num}' (LocationID: {loc_id}) cleared successfully.
+
+msgid "Failed to clear record for MaterialID '{mat_id}', TrayNumber '{tray_num}': {error}"
+msgstr "[zh] ailed to clear record for MaterialID '{mat_id}', TrayNumber '{tray_num}': {error}

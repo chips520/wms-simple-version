@@ -1,0 +1,320 @@
+# Simplified POT file for WMS Management App
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: management_app 1.0\n"
+"POT-Creation-Date: 2024-07-01 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically Generated\n"
+"Language-Team: None\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Manual Subtask\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "WMS Service Management"
+msgstr ""
+
+msgid "Service Control"
+msgstr ""
+
+msgid "Status: Unknown"
+msgstr ""
+
+msgid "Start Service"
+msgstr ""
+
+msgid "Stop Service"
+msgstr ""
+
+msgid "Restart Service"
+msgstr ""
+
+msgid "Enable Auto-start"
+msgstr ""
+
+msgid "Disable Auto-start"
+msgstr ""
+
+msgid "Service Host/Port Configuration"
+msgstr ""
+
+msgid "Host IP Address:"
+msgstr ""
+
+msgid "Port Number:"
+msgstr ""
+
+msgid "Save Configuration"
+msgstr ""
+
+msgid "Data Management"
+msgstr ""
+
+msgid "Record Details"
+msgstr ""
+
+msgid "LocationID:"
+msgstr ""
+
+msgid "MaterialID:"
+msgstr ""
+
+msgid "TrayNumber:"
+msgstr ""
+
+msgid "ProcessID:"
+msgstr ""
+
+msgid "TaskID:"
+msgstr ""
+
+msgid "StatusNotes:"
+msgstr ""
+
+msgid "Timestamp:"
+msgstr ""
+
+msgid "Add Record"
+msgstr ""
+
+msgid "Update Selected Record"
+msgstr ""
+
+msgid "Clear Form"
+msgstr ""
+
+msgid "Query Locations"
+msgstr ""
+
+msgid "Query by MaterialID:"
+msgstr ""
+
+msgid "Query by TrayNumber:"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Query Results"
+msgstr ""
+
+msgid "Loc. ID"
+msgstr ""
+
+msgid "Material ID"
+msgstr ""
+
+msgid "Tray No."
+msgstr ""
+
+# Timestamp is also a column header, reusing
+# msgid "Timestamp"
+# msgstr ""
+
+msgid "Process ID"
+msgstr ""
+
+msgid "Task ID"
+msgstr ""
+
+msgid "Status Notes"
+msgstr ""
+
+msgid "Clear Location by Criteria"
+msgstr ""
+
+msgid "MaterialID for Clear:"
+msgstr ""
+
+msgid "TrayNumber for Clear:"
+msgstr ""
+
+msgid "Clear by Mtrl+Tray"
+msgstr ""
+
+msgid "Note: Clears record's MaterialID. Requires both MaterialID and TrayNumber."
+msgstr ""
+
+# Messagebox Titles
+msgid "Service Info"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Service Control Error"
+msgstr ""
+
+msgid "Auto-start Error"
+msgstr ""
+
+msgid "Auto-start Info"
+msgstr ""
+
+msgid "Validation Error"
+msgstr ""
+
+msgid "Success"
+msgstr ""
+
+msgid "API Error"
+msgstr ""
+
+msgid "Confirm Clear"
+msgstr ""
+
+msgid "Search Results"
+msgstr ""
+
+msgid "Configuration Saved"
+msgstr ""
+
+msgid "Save Error"
+msgstr ""
+
+# Messagebox Messages (examples, especially formatted ones)
+msgid "Status: Running (PID: {pid_val})"
+msgstr ""
+
+msgid "Status: Stopped"
+msgstr ""
+
+msgid "Status: Error - {python_file} not found"
+msgstr ""
+
+msgid "Status: Error starting"
+msgstr ""
+
+msgid "Status: Stopped (Stale PID)"
+msgstr ""
+
+msgid "Status: Error (Invalid PID file)"
+msgstr ""
+
+msgid "Status: Stopped (PID file was empty)"
+msgstr ""
+
+msgid "Status: Error checking PID"
+msgstr ""
+
+msgid "Service is already running."
+msgstr ""
+
+msgid "{python_file} not found. Cannot start service."
+msgstr ""
+
+msgid "WMS Service started successfully."
+msgstr ""
+
+msgid "Failed to start WMS service: {error}"
+msgstr ""
+
+msgid "Service PID not found, cannot stop if not started by this manager instance or PID file is missing/corrupt."
+msgstr ""
+
+msgid "Service is not recorded as running (empty PID file)."
+msgstr ""
+
+msgid "Service PID file is corrupt or unreadable."
+msgstr ""
+
+msgid "Service is not recorded as running."
+msgstr ""
+
+msgid "No valid PID found to stop the service."
+msgstr ""
+
+msgid "WMS Service stopped successfully."
+msgstr ""
+
+msgid "Status: Stopped (taskkill error but process gone)"
+msgstr ""
+
+msgid "Failed to stop WMS service with taskkill: {error}. It might still be running."
+msgstr ""
+
+msgid "Status: Error stopping"
+msgstr ""
+
+msgid "An unexpected error occurred while stopping WMS service: {error}"
+msgstr ""
+
+msgid "Task Scheduler command (schtasks) not found. Is this a Windows environment?"
+msgstr ""
+
+msgid "Failed to create helper batch script for auto-start: {error}"
+msgstr ""
+
+msgid "Auto-start enabled for WMS service via Task '{task_name}'."
+msgstr ""
+
+msgid "Failed to enable auto-start (schtasks error): {error}"
+msgstr ""
+
+msgid "An unexpected error occurred while enabling auto-start: {error}"
+msgstr ""
+
+msgid "Auto-start disabled for WMS service."
+msgstr ""
+
+msgid "Auto-start task '{task_name}' was not found (already disabled)."
+msgstr ""
+
+msgid "Failed to disable auto-start (schtasks error): {error}"
+msgstr ""
+
+msgid "An unexpected error occurred while disabling auto-start: {error}"
+msgstr ""
+
+msgid "Host IP address cannot be empty."
+msgstr ""
+
+msgid "Port number must be an integer."
+msgstr ""
+
+msgid "Port number must be between 1 and 65535."
+msgstr ""
+
+msgid "Configuration has been saved successfully.\n\nIf the WMS service is currently running, you may need to restart it for changes to its listening address or port to take full effect."
+msgstr ""
+
+msgid "Failed to save configuration. Please check the logs for more details."
+msgstr ""
+
+msgid "Record added successfully. LocationID: {loc_id}"
+msgstr ""
+
+msgid "Failed to add record: {error}"
+msgstr ""
+
+msgid "No record selected for update. LocationID is missing."
+msgstr ""
+
+msgid "Record {loc_id} updated successfully."
+msgstr ""
+
+msgid "Failed to update record {loc_id}: {error}"
+msgstr ""
+
+msgid "Found {count} record(s)."
+msgstr ""
+
+msgid "Received unexpected data format from API."
+msgstr ""
+
+msgid "Failed to search records: {error}"
+msgstr ""
+
+msgid "Both MaterialID and TrayNumber are required to clear a record."
+msgstr ""
+
+msgid "Are you sure you want to clear the record for Material ID: '{mat_id}' and Tray Number: '{tray_num}'?\nThis will mark the location as empty."
+msgstr ""
+
+msgid "Record for MaterialID '{mat_id}', TrayNumber '{tray_num}' (LocationID: {loc_id}) cleared successfully."
+msgstr ""
+
+msgid "Failed to clear record for MaterialID '{mat_id}', TrayNumber '{tray_num}': {error}"
+msgstr ""
