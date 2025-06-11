@@ -5,16 +5,18 @@ import os
 import logging
 import sys
 import requests # Added requests
+import json # Added for configuration management
 
 # --- Configuration ---
 APP_NAME = "WMS Service Management"
-API_BASE_URL = "http://127.0.0.1:8000" # Added API base URL
+DEFAULT_HOST = "127.0.0.1"
+DEFAULT_PORT = 8000
+CONFIG_FILE_NAME = "service_config.json"
+# API_BASE_URL will be constructed dynamically from loaded/saved config.
+
 PID_FILE = "wms_service.pid"
 LOG_FILE = "management_app.log"
 WMS_MAIN_PY = "main.py" # Assumes main.py is in the same directory
-# WMS_HOST and WMS_PORT are now superseded by API_BASE_URL for uvicorn command generation.
-# WMS_HOST = "0.0.0.0" # Kept for reference, but not directly used by uvicorn cmd if API_BASE_URL is parsed
-# WMS_PORT = 8000      # Kept for reference
 TASK_NAME = "WMSServiceAutoStart"
 
 # --- Logging Setup ---
@@ -29,9 +31,13 @@ logging.basicConfig(
 
 # --- API Service Client ---
 class ApiService:
-    def __init__(self, base_url=API_BASE_URL):
+    def __init__(self, base_url): # Constructor now requires base_url
         self.base_url = base_url
         self.logger = logging.getLogger(__name__) # Use the app's logger
+
+    def update_base_url(self, new_base_url): # Method to update base_url
+        self.base_url = new_base_url
+        self.logger.info(f"ApiService base_url updated to: {self.base_url}")
 
     def _handle_response(self, response):
         """Helper to handle HTTP response, returning (bool, data_or_error_msg)."""
@@ -173,10 +179,17 @@ class ServiceManagerApp:
     def __init__(self, root):
         self.root = root
         self.root.title(APP_NAME)
-        self.root.geometry("600x700") # Increased size for data management UI
+        self.root.geometry("600x750") # Adjusted height for config UI
 
         self.service_pid = None
-        self.api_service = ApiService()
+        self.logger = logging.getLogger(__name__) # Ensure ServiceManagerApp has its own logger instance
+        self.config_file_path = os.path.abspath(CONFIG_FILE_NAME)
+        self.service_config = self._load_config() # Load config on init
+
+        # Dynamically set current_api_base_url based on loaded config
+        self.current_api_base_url = f"http://{self.service_config['host']}:{self.service_config['port']}"
+
+        self.api_service = ApiService(base_url=self.current_api_base_url)
         self.selected_location_id_for_update = None # For tracking selected LocationID
 
         # --- Main PanedWindow for layout ---
@@ -209,6 +222,24 @@ class ServiceManagerApp:
         self.enable_auto_start_button.grid(row=0, column=0, padx=5, pady=5)
         self.disable_auto_start_button = ttk.Button(auto_start_frame, text="Disable Auto-start", command=self.disable_auto_start)
         self.disable_auto_start_button.grid(row=0, column=1, padx=5, pady=5)
+
+        # --- Service Host/Port Configuration Frame (within service_control_frame) ---
+        config_ui_frame = ttk.LabelFrame(service_control_frame, text="Service Host/Port Configuration")
+        config_ui_frame.pack(pady=10, padx=10, fill=tk.X, side=tk.BOTTOM, expand=False) # Pack at the bottom
+
+        ttk.Label(config_ui_frame, text="Host IP Address:").grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
+        self.host_ip_entry = ttk.Entry(config_ui_frame, width=30)
+        self.host_ip_entry.grid(row=0, column=1, padx=5, pady=5, sticky=tk.EW)
+
+        ttk.Label(config_ui_frame, text="Port Number:").grid(row=1, column=0, padx=5, pady=5, sticky=tk.W)
+        self.port_number_entry = ttk.Entry(config_ui_frame, width=15)
+        self.port_number_entry.grid(row=1, column=1, padx=5, pady=5, sticky=tk.W)
+
+        self.save_config_button = ttk.Button(config_ui_frame, text="Save Configuration", command=self._save_config_handler)
+        self.save_config_button.grid(row=2, column=0, columnspan=2, padx=5, pady=10)
+
+        config_ui_frame.columnconfigure(1, weight=1) # Allow host entry to expand
+
 
         # --- Bottom frame for data management ---
         data_management_frame = ttk.LabelFrame(main_paned_window, text="Data Management")
@@ -343,6 +374,130 @@ class ServiceManagerApp:
         self.initial_status_check()
         self.update_auto_start_buttons_status()
         self._clear_record_form_handler() # Initialize form state
+        self._populate_config_ui_fields() # Populate config fields after all UI is setup
+
+    def _populate_config_ui_fields(self):
+        """Populates the host and port UI entries from self.service_config."""
+        # This check is defensive, __init__ order should ensure they exist.
+        if hasattr(self, 'host_ip_entry') and hasattr(self, 'port_number_entry'):
+            self.host_ip_entry.delete(0, tk.END)
+            self.host_ip_entry.insert(0, self.service_config.get('host', DEFAULT_HOST))
+            self.port_number_entry.delete(0, tk.END)
+            self.port_number_entry.insert(0, str(self.service_config.get('port', DEFAULT_PORT)))
+            self.logger.info("Configuration UI fields populated from self.service_config.")
+        else:
+            self.logger.error("Attempted to populate config UI fields before they were fully created.")
+
+    def _load_config(self) -> dict:
+        self.logger.info(f"Attempting to load configuration from: {self.config_file_path}")
+        host = DEFAULT_HOST
+        port = DEFAULT_PORT
+        try:
+            with open(self.config_file_path, 'r') as f:
+                config_data = json.load(f)
+
+            loaded_host = config_data.get('host', DEFAULT_HOST)
+            # Get port as string first for robust error handling if it's not an int
+            loaded_port_str = str(config_data.get('port', DEFAULT_PORT))
+
+            if isinstance(loaded_host, str) and loaded_host.strip(): # Check if host is not empty string
+                host = loaded_host.strip()
+            else:
+                self.logger.warning(f"Invalid host '{loaded_host}' in config, using default: {DEFAULT_HOST}")
+
+            try:
+                parsed_port = int(loaded_port_str)
+                if 1 <= parsed_port <= 65535: # Standard port range
+                    port = parsed_port
+                else:
+                    self.logger.warning(f"Port {parsed_port} from config is outside valid range (1-65535), using default: {DEFAULT_PORT}")
+            except ValueError:
+                self.logger.warning(f"Invalid port value '{loaded_port_str}' in config, using default: {DEFAULT_PORT}")
+
+        except FileNotFoundError:
+            self.logger.info(f"Configuration file '{self.config_file_path}' not found. Using defaults. Will be created if config is saved.")
+        except json.JSONDecodeError:
+            self.logger.warning(f"Error decoding JSON from '{self.config_file_path}'. Using defaults.")
+        except Exception as e: # Catch any other unexpected errors during load
+            self.logger.error(f"Unexpected error loading config: {e}. Using defaults.")
+
+        final_config = {'host': host, 'port': port}
+        self.logger.info(f"Configuration loaded/initialised to: {final_config}")
+        return final_config
+
+    def _save_config_handler(self):
+        self.logger.info("Save configuration button clicked.")
+        host_val = self.host_ip_entry.get().strip()
+        port_str_val = self.port_number_entry.get().strip()
+
+        if not host_val:
+            messagebox.showerror("Validation Error", "Host IP address cannot be empty.")
+            self.logger.warning("Save config validation failed: Host IP empty.")
+            return
+
+        try:
+            port_val = int(port_str_val)
+            if not (1 <= port_val <= 65535):
+                messagebox.showerror("Validation Error", "Port number must be between 1 and 65535.")
+                self.logger.warning(f"Save config validation failed: Port {port_val} out of range.")
+                return
+        except ValueError:
+            messagebox.showerror("Validation Error", "Port number must be an integer.")
+            self.logger.warning(f"Save config validation failed: Port '{port_str_val}' not an integer.")
+            return
+
+        save_successful = self._save_config(host_val, port_val) # Call the actual save logic
+
+        if save_successful:
+            # Update UI fields again in case _save_config modified them (e.g. strip host)
+            # or to confirm the saved state.
+            self._populate_config_ui_fields()
+            messagebox.showinfo("Configuration Saved",
+                                "Configuration has been saved successfully.\n\n"
+                                "If the WMS service is currently running, "
+                                "you may need to restart it for changes to its "
+                                "listening address or port to take full effect.")
+            self.logger.info("Configuration save handler completed successfully.")
+        else:
+            # _save_config already logs detailed errors
+            messagebox.showerror("Save Error", "Failed to save configuration. Please check the logs for more details.")
+            self.logger.error("Configuration save handler failed.")
+
+
+    def _save_config(self, host: str, port: int) -> bool:
+        self.logger.info(f"Attempting to save configuration: Host='{host}', Port={port}")
+        # Basic validation (more robust validation might be in the UI handler calling this)
+        if not isinstance(host, str) or not host.strip():
+            self.logger.error("Invalid host value for saving: cannot be empty.")
+            return False
+
+        try:
+            port_int = int(port) # Ensure port is int
+            if not (1 <= port_int <= 65535):
+                 self.logger.warning(f"Port {port_int} is outside typical valid range (1-65535). Saving anyway.")
+                 # Depending on strictness, could return False here.
+        except ValueError:
+            self.logger.error(f"Invalid port value '{port}' for saving. Must be an integer.")
+            return False
+
+        current_config_to_save = {'host': host.strip(), 'port': port_int}
+        try:
+            with open(self.config_file_path, 'w') as f:
+                json.dump(current_config_to_save, f, indent=4)
+
+            # Update in-memory config and dependent services
+            self.service_config = current_config_to_save
+            self.current_api_base_url = f"http://{self.service_config['host']}:{self.service_config['port']}"
+            self.api_service.update_base_url(self.current_api_base_url) # Update ApiService instance
+
+            self.logger.info(f"Configuration saved successfully: {self.service_config}")
+            return True
+        except IOError as e:
+            self.logger.error(f"Error saving configuration to {self.config_file_path}: {e}")
+            return False
+        except Exception as e: # Catch any other unexpected errors during save
+            self.logger.error(f"Unexpected error saving config: {e}")
+            return False
 
     def _clear_record_form_handler(self):
         self._log_action("Clearing record form.")
@@ -599,15 +754,9 @@ class ServiceManagerApp:
         python_exe = sys.executable
         # script_path = os.path.abspath(WMS_MAIN_PY) # Not strictly needed for the command string itself if main.py is in CWD for uvicorn
 
-        # Parse host and port from API_BASE_URL for the Uvicorn command
-        try:
-            parts = API_BASE_URL.split("//")[-1].split(":")
-            uvicorn_host = parts[0]
-            uvicorn_port = parts[1] if len(parts) > 1 else "8000" # Default port if not in URL
-        except Exception as e:
-            self._log_action(f"Error parsing API_BASE_URL ('{API_BASE_URL}') for host/port: {e}. Defaulting to 127.0.0.1:8000 for uvicorn.", level=logging.WARNING)
-            uvicorn_host = "127.0.0.1"
-            uvicorn_port = "8000"
+        # Parse host and port from self.service_config for the Uvicorn command
+        uvicorn_host = self.service_config.get('host', DEFAULT_HOST)
+        uvicorn_port = str(self.service_config.get('port', DEFAULT_PORT)) # Ensure port is string for command
 
         # Ensure main_module_name correctly refers to 'main' if WMS_MAIN_PY is 'main.py'
         main_module_name = os.path.splitext(WMS_MAIN_PY)[0]
@@ -790,15 +939,9 @@ class ServiceManagerApp:
         # wms_script_path = os.path.join(script_dir, WMS_MAIN_PY) # Not needed here, command uses module path
 
         # Construct the command Task Scheduler will run.
-        # It should use the same host/port as parsed from API_BASE_URL for consistency.
-        try:
-            parts = API_BASE_URL.split("//")[-1].split(":")
-            uvicorn_host_for_task = parts[0]
-            uvicorn_port_for_task = parts[1] if len(parts) > 1 else "8000"
-        except Exception as e:
-            self._log_action(f"Error parsing API_BASE_URL for task scheduler command: {e}. Defaulting to 127.0.0.1:8000.", level=logging.WARNING)
-            uvicorn_host_for_task = "127.0.0.1"
-            uvicorn_port_for_task = "8000"
+        # It should use the same host/port from self.service_config for consistency.
+        uvicorn_host_for_task = self.service_config.get('host', DEFAULT_HOST)
+        uvicorn_port_for_task = str(self.service_config.get('port', DEFAULT_PORT))
 
         main_module_name_for_task = os.path.splitext(WMS_MAIN_PY)[0]
         uvicorn_command = f'"{python_exe}" -m uvicorn {main_module_name_for_task}:app --host {uvicorn_host_for_task} --port {uvicorn_port_for_task}'

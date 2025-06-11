@@ -15,6 +15,7 @@ A FastAPI-based Warehouse Material Service (WMS) for tracking material locations
 **Management Application (`management_app.py`):**
 *   **Service Control:**
     *   GUI for starting, stopping, and restarting the WMS service.
+    *   Configuration of the WMS service's host IP and port, saved locally in `service_config.json`.
     *   Enable/Disable auto-start of the WMS service on user logon (uses Windows Task Scheduler).
     *   Displays current service status.
 *   **Data Management:**
@@ -41,6 +42,7 @@ A FastAPI-based Warehouse Material Service (WMS) for tracking material locations
 ├── test_main.py            # Pytest unit tests for the API.
 ├── management_app.py       # Tkinter GUI application for managing the WMS service and data.
 ├── requirements.txt        # Python dependencies.
+├── service_config.json     # Stores host/port configuration for the WMS service (managed by GUI).
 ├── wms.db                  # SQLite database file (created automatically).
 ├── wms_service.pid         # Stores PID of running WMS service (managed by management_app.py).
 ├── management_app.log      # Log file for management_app.py.
@@ -69,23 +71,21 @@ A FastAPI-based Warehouse Material Service (WMS) for tracking material locations
 
 ## Running the WMS Service
 
-The WMS service is a FastAPI application.
+The WMS service is a FastAPI application. The host and port it listens on are configured via the Management Application (see below) and default to `127.0.0.1:8000`.
 
-1.  **Run Directly with Uvicorn:**
-    Open your terminal in the project root directory and run:
+1.  **Run Directly with Uvicorn (using default or configured settings):**
+    To run the service manually, you should use the host and port configured in the Management Application. For example, if configured for `127.0.0.1:8000`:
     ```bash
-    uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    uvicorn main:app --host 127.0.0.1 --port 8000
     ```
-    *   `--reload`: Enables auto-reload on code changes (for development).
-    *   `--host 0.0.0.0` (or `127.0.0.1` as configured in `management_app.py`'s `API_BASE_URL` for Uvicorn): Makes the service accessible.
-    *   `--port 8000`: Runs the service on port 8000.
+    *   Add `--reload` for development: `uvicorn main:app --reload --host 127.0.0.1 --port 8000`.
 
 2.  **API Documentation:**
-    Once the service is running, you can access the interactive API documentation (Swagger UI) in your browser at:
-    [http://localhost:8000/docs](http://localhost:8000/docs) (Adjust host if changed from `localhost`)
+    Once the service is running, you can access the interactive API documentation (Swagger UI) in your browser. If the service is running on `127.0.0.1:8000`:
+    [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
     ReDoc documentation is also available at:
-    [http://localhost:8000/redoc](http://localhost:8000/redoc)
+    [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
 ## Using the Management Application (`management_app.py`)
 
@@ -100,22 +100,35 @@ The management application provides a GUI to control the WMS service and manage 
 
 2.  **Service Control Features:**
     *   **Status Display:** Shows if the WMS service is "Running", "Stopped", etc.
-    *   **Start/Stop/Restart Service:** Buttons to control the Uvicorn process running the WMS service.
-    *   **Enable/Disable Auto-start:** Manages Windows Task Scheduler entry for automatic service start on logon.
+    *   **Start/Stop/Restart Service:** Buttons to control the Uvicorn process running the WMS service. These actions use the host and port defined in the "Service Host/Port Configuration" section.
+    *   **Enable/Disable Auto-start:** Manages Windows Task Scheduler entry for automatic service start on logon. The scheduled task also uses the configured host and port.
+    *   **Service Host/Port Configuration:**
+        *   Located within the "Service Control" section, this allows you to customize the network address for the WMS service.
+        *   **Host IP Address:** Enter the IP address the WMS service should listen on.
+            -   `127.0.0.1` (default): The service will only be accessible from your local machine.
+            -   `0.0.0.0`: The service will be accessible from other computers on your network (if your firewall allows).
+        *   **Port Number:** Specify the port number for the service (default: `8000`).
+        *   Click the **"Save Configuration"** button to save these settings. They are stored in a `service_config.json` file in the application's directory. If the file doesn't exist or is invalid, defaults are used on startup.
+        *   **How these settings are used:**
+            -   When you click "Start Service", the WMS service will use the saved Host IP and Port.
+            -   If auto-start is enabled, the service will use these settings when launched automatically.
+            -   The Data Management features of this GUI will attempt to connect to the service at the configured Host IP and Port. This connection information is updated immediately after saving.
+        *   **Important:** If the WMS service is already running and you change and save these settings:
+            -   The Data Management tab will immediately try to use the new address for its API calls.
+            -   However, the *running* WMS service itself will continue to listen on the old address until it is **restarted**. You'll need to stop and start the service via the GUI (or manually) for it to bind to the newly configured Host IP and Port.
 
-3.  **Data Management in GUI:**
-    This section allows direct interaction with the WMS API for CRUD operations.
+3.  **Data Management Features:**
+    This section allows direct interaction with the WMS API for CRUD operations, using the host and port configured above.
 
     *   **Record Details Frame:**
-        *   **Input Fields:** `MaterialID`, `TrayNumber`, `ProcessID`, `TaskID`, and `StatusNotes` (multi-line). `LocationID` and `Timestamp` are display-only.
+        *   **Input Fields:** `MaterialID`, `TrayNumber`, `ProcessID`, `TaskID`, and `StatusNotes` (multi-line). `LocationID` and `Timestamp` are display-only, populated when a record is selected.
         *   **Add Record Button:** Collects data from the input fields (MaterialID is required) and calls the API to create a new location record.
         *   **Update Selected Record Button:** Enabled when a record is selected from the "Query Results" table. Collects data from the form and calls the API to update the selected record.
         *   **Clear Form Button:** Clears all fields in the "Record Details" section, disables the "Update" button, and resets selection state.
 
     *   **Query Locations Frame:**
         *   **Input Fields:** "Query by MaterialID" and "Query by TrayNumber".
-        *   **Search Button:** Retrieves records from the API based on the provided MaterialID and/or TrayNumber. If both are empty, it fetches all records. Results are displayed in the "Query Results" table.
-        *   *API Note:* Search operations use efficient server-side filtering.
+        *   **Search Button:** Retrieves records from the API based on the provided MaterialID and/or TrayNumber using efficient server-side filtering. If both fields are empty, it fetches all records. Results are displayed in the "Query Results" table.
 
     *   **Query Results Table:**
         *   **Display:** Shows records retrieved from the API. Columns include: `Loc. ID`, `Material ID`, `Tray No.`, `Timestamp`, `Process ID`, `Task ID`, and `Status Notes`.
@@ -123,9 +136,8 @@ The management application provides a GUI to control the WMS service and manage 
 
     *   **Clear Location by Criteria Frame:**
         *   **Input Fields:** "MaterialID for Clear" and "TrayNumber for Clear".
-        *   **Clear by Mtrl+Tray Button:** Uses the API to "clear" a specific record (sets its MaterialID to empty and updates the timestamp) matching both provided criteria.
+        *   **Clear by Mtrl+Tray Button:** Uses a dedicated API endpoint to "clear" a specific record (sets its MaterialID to empty and updates the timestamp) matching both provided criteria.
         *   **Confirmation:** Requires both MaterialID and TrayNumber, and prompts for user confirmation before proceeding.
-        *   *API Note:* This uses a dedicated, efficient API endpoint.
 
 ## Database
 
