@@ -1,322 +1,230 @@
-# Simplified POT file for WMS Management App
+# Chinese translation for WMS Management App
 #
 msgid ""
-msgstr "[zh]
+msgstr ""
 "Project-Id-Version: management_app 1.0\n"
 "POT-Creation-Date: 2024-07-01 12:00+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically Generated\n"
-"Language-Team: None\n"
+"PO-Revision-Date: 2024-12-06 09:00+0800\n"
+"Last-Translator: Auto Generated\n"
+"Language-Team: Chinese\n"
 "Language: zh\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Manual Subtask\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "WMS Service Management"
-msgstr "[zh] MS Service Management
+msgstr "WMS 服务管理"
 
 msgid "Service Control"
-msgstr "[zh] ervice Control
+msgstr "服务控制"
 
 msgid "Status: Unknown"
-msgstr "[zh] tatus: Unknown
+msgstr "状态：未知"
 
 msgid "Start Service"
-msgstr "[zh] tart Service
+msgstr "启动服务"
 
 msgid "Stop Service"
-msgstr "[zh] top Service
+msgstr "停止服务"
 
 msgid "Restart Service"
-msgstr "[zh] estart Service
+msgstr "重启服务"
 
 msgid "Enable Auto-start"
-msgstr "[zh] nable Auto-start
+msgstr "启用自启动"
 
 msgid "Disable Auto-start"
-msgstr "[zh] isable Auto-start
+msgstr "禁用自启动"
 
 msgid "Service Host/Port Configuration"
-msgstr "[zh] ervice Host/Port Configuration
+msgstr "服务主机/端口配置"
 
 msgid "Host IP Address:"
-msgstr "[zh] ost IP Address:
+msgstr "主机IP地址："
 
 msgid "Port Number:"
-msgstr "[zh] ort Number:
+msgstr "端口号："
 
 msgid "Save Configuration"
-msgstr "[zh] ave Configuration
+msgstr "保存配置"
 
 msgid "Data Management"
-msgstr "[zh] ata Management
+msgstr "数据管理"
 
 msgid "Record Details"
-msgstr "[zh] ecord Details
+msgstr "记录详情"
 
 msgid "LocationID:"
-msgstr "[zh] ocationID:
+msgstr "位置ID："
 
 msgid "MaterialID:"
-msgstr "[zh] aterialID:
+msgstr "物料ID："
 
 msgid "TrayNumber:"
-msgstr "[zh] rayNumber:
+msgstr "料盘号："
 
 msgid "ProcessID:"
-msgstr "[zh] rocessID:
+msgstr "工序ID："
 
 msgid "TaskID:"
-msgstr "[zh] askID:
+msgstr "任务ID："
 
 msgid "StatusNotes:"
-msgstr "[zh] tatusNotes:
+msgstr "状态备注："
 
 msgid "Timestamp:"
-msgstr "[zh] imestamp:
+msgstr "时间戳："
 
 msgid "Add Record"
-msgstr "[zh] dd Record
+msgstr "添加记录"
 
 msgid "Update Selected Record"
-msgstr "[zh] pdate Selected Record
+msgstr "更新选中记录"
 
 msgid "Clear Form"
-msgstr "[zh] lear Form
+msgstr "清空表单"
 
 msgid "Query Locations"
-msgstr "[zh] uery Locations
+msgstr "查询位置"
 
 msgid "Query by MaterialID:"
-msgstr "[zh] uery by MaterialID:
+msgstr "按物料ID查询："
 
 msgid "Query by TrayNumber:"
-msgstr "[zh] uery by TrayNumber:
+msgstr "按料盘号查询："
 
 msgid "Search"
-msgstr "[zh] earch
+msgstr "搜索"
 
-msgid "Query Results"
-msgstr "[zh] uery Results
+msgid "Clear Location"
+msgstr "清空位置"
 
-msgid "Loc. ID"
-msgstr "[zh] oc. ID
+msgid "Language Selection"
+msgstr "语言选择"
 
-msgid "Material ID"
-msgstr "[zh] aterial ID
+msgid "Language:"
+msgstr "语言："
 
-msgid "Tray No."
-msgstr "[zh] ray No.
+msgid "Apply Language"
+msgstr "应用语言"
 
-# Timestamp is also a column header, reusing
-# msgid "Timestamp"
-# msgstr ""
+msgid "English (en)"
+msgstr "英文 (en)"
 
-msgid "Process ID"
-msgstr "[zh] rocess ID
+msgid "中文 (Chinese) (zh)"
+msgstr "中文 (zh)"
 
-msgid "Task ID"
-msgstr "[zh] ask ID
+msgid "Service started successfully."
+msgstr "服务启动成功。"
 
-msgid "Status Notes"
-msgstr "[zh] tatus Notes
+msgid "Service stopped successfully."
+msgstr "服务停止成功。"
 
-msgid "Clear Location by Criteria"
-msgstr "[zh] lear Location by Criteria
+msgid "Service restarted successfully."
+msgstr "服务重启成功。"
 
-msgid "MaterialID for Clear:"
-msgstr "[zh] aterialID for Clear:
+msgid "Failed to start service: {error}"
+msgstr "启动服务失败：{error}"
 
-msgid "TrayNumber for Clear:"
-msgstr "[zh] rayNumber for Clear:
+msgid "Failed to stop service: {error}"
+msgstr "停止服务失败：{error}"
 
-msgid "Clear by Mtrl+Tray"
-msgstr "[zh] lear by Mtrl+Tray
+msgid "Failed to restart service: {error}"
+msgstr "重启服务失败：{error}"
 
-msgid "Note: Clears record's MaterialID. Requires both MaterialID and TrayNumber."
-msgstr "[zh] ote: Clears record's MaterialID. Requires both MaterialID and TrayNumber.
+msgid "Configuration saved successfully."
+msgstr "配置保存成功。"
 
-# Messagebox Titles
-msgid "Service Info"
-msgstr "[zh] ervice Info
+msgid "Invalid port number. Please enter a valid port (1-65535)."
+msgstr "无效的端口号。请输入有效端口（1-65535）。"
 
-msgid "Error"
-msgstr "[zh] rror
+msgid "Invalid IP address format."
+msgstr "无效的IP地址格式。"
 
-msgid "Service Control Error"
-msgstr "[zh] ervice Control Error
+msgid "Record added successfully."
+msgstr "记录添加成功。"
 
-msgid "Auto-start Error"
-msgstr "[zh] uto-start Error
+msgid "Record updated successfully."
+msgstr "记录更新成功。"
 
-msgid "Auto-start Info"
-msgstr "[zh] uto-start Info
-
-msgid "Validation Error"
-msgstr "[zh] alidation Error
-
-msgid "Success"
-msgstr "[zh] uccess
-
-msgid "API Error"
-msgstr "[zh] PI Error
-
-msgid "Confirm Clear"
-msgstr "[zh] onfirm Clear
-
-msgid "Search Results"
-msgstr "[zh] earch Results
-
-msgid "Configuration Saved"
-msgstr "[zh] onfiguration Saved
-
-msgid "Save Error"
-msgstr "[zh] ave Error
-
-# Messagebox Messages (examples, especially formatted ones)
-msgid "Status: Running (PID: {pid_val})"
-msgstr "[zh] tatus: Running (PID: {pid_val})
-
-msgid "Status: Stopped"
-msgstr "[zh] tatus: Stopped
-
-msgid "Status: Error - {python_file} not found"
-msgstr "[zh] tatus: Error - {python_file} not found
-
-msgid "Status: Error starting"
-msgstr "[zh] tatus: Error starting
-
-msgid "Status: Stopped (Stale PID)"
-msgstr "[zh] tatus: Stopped (Stale PID)
-
-msgid "Status: Error (Invalid PID file)"
-msgstr "[zh] tatus: Error (Invalid PID file)
-
-msgid "Status: Stopped (PID file was empty)"
-msgstr "[zh] tatus: Stopped (PID file was empty)
-
-msgid "Status: Error checking PID"
-msgstr "[zh] tatus: Error checking PID
-
-msgid "Service is already running."
-msgstr "[zh] ervice is already running.
-
-msgid "{python_file} not found. Cannot start service."
-msgstr "[zh] python_file} not found. Cannot start service.
-
-msgid "WMS Service started successfully."
-msgstr "[zh] MS Service started successfully.
-
-msgid "Failed to start WMS service: {error}"
-msgstr "[zh] ailed to start WMS service: {error}
-
-msgid "Service PID not found, cannot stop if not started by this manager instance or PID file is missing/corrupt."
-msgstr "[zh] ervice PID not found, cannot stop if not started by this manager instance or PID file is missing/corrupt.
-
-msgid "Service is not recorded as running (empty PID file)."
-msgstr "[zh] ervice is not recorded as running (empty PID file).
-
-msgid "Service PID file is corrupt or unreadable."
-msgstr "[zh] ervice PID file is corrupt or unreadable.
-
-msgid "Service is not recorded as running."
-msgstr "[zh] ervice is not recorded as running.
-
-msgid "No valid PID found to stop the service."
-msgstr "[zh] o valid PID found to stop the service.
-
-msgid "WMS Service stopped successfully."
-msgstr "[zh] MS Service stopped successfully.
-
-msgid "Status: Stopped (taskkill error but process gone)"
-msgstr "[zh] tatus: Stopped (taskkill error but process gone)
-
-msgid "Failed to stop WMS service with taskkill: {error}. It might still be running."
-msgstr "[zh] ailed to stop WMS service with taskkill: {error}. It might still be running.
-
-msgid "Status: Error stopping"
-msgstr "[zh] tatus: Error stopping
-
-msgid "An unexpected error occurred while stopping WMS service: {error}"
-msgstr "[zh] n unexpected error occurred while stopping WMS service: {error}
-
-msgid "Task Scheduler command (schtasks) not found. Is this a Windows environment?"
-msgstr "[zh] ask Scheduler command (schtasks) not found. Is this a Windows environment?
-
-msgid "Failed to create helper batch script for auto-start: {error}"
-msgstr "[zh] ailed to create helper batch script for auto-start: {error}
-
-msgid "Auto-start enabled for WMS service via Task '{task_name}'."
-msgstr "[zh] uto-start enabled for WMS service via Task '{task_name}'.
-
-msgid "Failed to enable auto-start (schtasks error): {error}"
-msgstr "[zh] ailed to enable auto-start (schtasks error): {error}
-
-msgid "An unexpected error occurred while enabling auto-start: {error}"
-msgstr "[zh] n unexpected error occurred while enabling auto-start: {error}
-
-msgid "Auto-start disabled for WMS service."
-msgstr "[zh] uto-start disabled for WMS service.
-
-msgid "Auto-start task '{task_name}' was not found (already disabled)."
-msgstr "[zh] uto-start task '{task_name}' was not found (already disabled).
-
-msgid "Failed to disable auto-start (schtasks error): {error}"
-msgstr "[zh] ailed to disable auto-start (schtasks error): {error}
-
-msgid "An unexpected error occurred while disabling auto-start: {error}"
-msgstr "[zh] n unexpected error occurred while disabling auto-start: {error}
-
-msgid "Host IP address cannot be empty."
-msgstr "[zh] ost IP address cannot be empty.
-
-msgid "Port number must be an integer."
-msgstr "[zh] ort number must be an integer.
-
-msgid "Port number must be between 1 and 65535."
-msgstr "[zh] ort number must be between 1 and 65535.
-
-msgid "Configuration has been saved successfully.\n\nIf the WMS service is currently running, you may need to restart it for changes to its listening address or port to take full effect."
-msgstr "[zh] onfiguration has been saved successfully.\n\nIf the WMS service is currently running, you may need to restart it for changes to its listening address or port to take full effect.
-
-msgid "Failed to save configuration. Please check the logs for more details."
-msgstr "[zh] ailed to save configuration. Please check the logs for more details.
-
-msgid "Record added successfully. LocationID: {loc_id}"
-msgstr "[zh] ecord added successfully. LocationID: {loc_id}
+msgid "Location cleared successfully."
+msgstr "位置清空成功。"
 
 msgid "Failed to add record: {error}"
-msgstr "[zh] ailed to add record: {error}
+msgstr "添加记录失败：{error}"
 
-msgid "No record selected for update. LocationID is missing."
-msgstr "[zh] o record selected for update. LocationID is missing.
+msgid "Failed to update record: {error}"
+msgstr "更新记录失败：{error}"
 
-msgid "Record {loc_id} updated successfully."
-msgstr "[zh] ecord {loc_id} updated successfully.
+msgid "Failed to clear location: {error}"
+msgstr "清空位置失败：{error}"
 
-msgid "Failed to update record {loc_id}: {error}"
-msgstr "[zh] ailed to update record {loc_id}: {error}
+msgid "Please select a record to update."
+msgstr "请选择要更新的记录。"
 
-msgid "Found {count} record(s)."
-msgstr "[zh] ound {count} record(s).
+msgid "Please select a record to clear."
+msgstr "请选择要清空的记录。"
 
-msgid "Received unexpected data format from API."
-msgstr "[zh] eceived unexpected data format from API.
+msgid "No records found."
+msgstr "未找到记录。"
 
-msgid "Failed to search records: {error}"
-msgstr "[zh] ailed to search records: {error}
+msgid "Query completed. Found {count} records."
+msgstr "查询完成。找到 {count} 条记录。"
 
-msgid "Both MaterialID and TrayNumber are required to clear a record."
-msgstr "[zh] oth MaterialID and TrayNumber are required to clear a record.
+msgid "Auto-start"
+msgstr "自启动"
 
-msgid "Are you sure you want to clear the record for Material ID: '{mat_id}' and Tray Number: '{tray_num}'?\nThis will mark the location as empty."
-msgstr "[zh] re you sure you want to clear the record for Material ID: '{mat_id}' and Tray Number: '{tray_num}'?\nThis will mark the location as empty.
+msgid "Auto-start enabled for WMS service."
+msgstr "WMS服务自启动已启用。"
 
-msgid "Record for MaterialID '{mat_id}', TrayNumber '{tray_num}' (LocationID: {loc_id}) cleared successfully."
-msgstr "[zh] ecord for MaterialID '{mat_id}', TrayNumber '{tray_num}' (LocationID: {loc_id}) cleared successfully.
+msgid "Auto-start disabled for WMS service."
+msgstr "WMS服务自启动已禁用。"
 
-msgid "Failed to clear record for MaterialID '{mat_id}', TrayNumber '{tray_num}': {error}"
-msgstr "[zh] ailed to clear record for MaterialID '{mat_id}', TrayNumber '{tray_num}': {error}
+msgid "Auto-start Info"
+msgstr "自启动信息"
+
+msgid "Auto-start task '{task_name}' was not found (already disabled)."
+msgstr "自启动任务 '{task_name}' 未找到（已禁用）。"
+
+msgid "Auto-start Error"
+msgstr "自启动错误"
+
+msgid "Failed to enable auto-start (Task Scheduler error): {error}"
+msgstr "启用自启动失败（任务计划程序错误）：{error}"
+
+msgid "Failed to disable auto-start (Task Scheduler error): {error}"
+msgstr "禁用自启动失败（任务计划程序错误）：{error}"
+
+msgid "Error"
+msgstr "错误"
+
+msgid "Task Scheduler command (schtasks) not found. This feature requires Windows and Task Scheduler."
+msgstr "未找到任务计划程序命令（schtasks）。此功能需要Windows和任务计划程序。"
+
+msgid "An unexpected error occurred while enabling auto-start: {error}"
+msgstr "启用自启动时发生意外错误：{error}"
+
+msgid "An unexpected error occurred while disabling auto-start: {error}"
+msgstr "禁用自启动时发生意外错误：{error}"
+
+msgid "Status: Running (PID: {pid})"
+msgstr "状态：运行中（PID：{pid}）"
+
+msgid "Status: Stopped"
+msgstr "状态：已停止"
+
+msgid "Operation successful (No Content)"
+msgstr "操作成功（无内容）"
+
+msgid "API request failed: {error}"
+msgstr "API请求失败：{error}"
+
+msgid "Connection error: {error}"
+msgstr "连接错误：{error}"
+
+msgid "Request timeout: {error}"
+msgstr "请求超时：{error}"
+
+msgid "Unexpected error: {error}"
+msgstr "意外错误：{error}"
