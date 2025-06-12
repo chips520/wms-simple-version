@@ -246,11 +246,20 @@ class ServiceManagerApp:
         data_management_frame = ttk.LabelFrame(main_paned_window, text=_("Data Management"))
         main_paned_window.add(data_management_frame, weight=1)
 
-        record_details_frame = ttk.LabelFrame(data_management_frame, text=_("Record Details"))
-        record_details_frame.pack(pady=10, padx=10, fill=tk.X)
+        # Create the Notebook widget for data management tabs
+        self.data_notebook = ttk.Notebook(data_management_frame)
+        self.data_notebook.pack(expand=True, fill='both', pady=5, padx=5)
 
-        ttk.Label(record_details_frame, text=_("LocationID:")).grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
-        self.location_id_entry = ttk.Entry(record_details_frame, state="readonly")
+        # --- Tab 1: Manage Records (Add, Update, Clear by Criteria) ---
+        self.manage_records_tab = ttk.Frame(self.data_notebook) # Parent is the notebook
+        self.data_notebook.add(self.manage_records_tab, text=_("Manage Records"))
+
+        # "Record Details" Frame - now parented to manage_records_tab
+        self.record_details_frame = ttk.LabelFrame(self.manage_records_tab, text=_("Record Details"))
+        self.record_details_frame.pack(side=tk.TOP, fill=tk.X, padx=5, pady=5, expand=False)
+
+        ttk.Label(self.record_details_frame, text=_("LocationID:")).grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
+        self.location_id_entry = ttk.Entry(self.record_details_frame, state="readonly")
         self.location_id_entry.grid(row=0, column=1, padx=5, pady=5, sticky=tk.EW)
         ttk.Label(record_details_frame, text=_("MaterialID:")).grid(row=1, column=0, padx=5, pady=5, sticky=tk.W)
         self.material_id_entry = ttk.Entry(record_details_frame)
@@ -281,23 +290,44 @@ class ServiceManagerApp:
         self.clear_form_button = ttk.Button(record_action_frame, text=_("Clear Form"), command=self._clear_record_form_handler)
         self.clear_form_button.pack(side=tk.LEFT, padx=5)
 
-        query_frame = ttk.LabelFrame(data_management_frame, text=_("Query Locations"))
-        query_frame.pack(pady=10, padx=10, fill=tk.X)
-        ttk.Label(query_frame, text=_("Query by MaterialID:")).grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
-        self.query_material_id_entry = ttk.Entry(query_frame)
-        self.query_material_id_entry.grid(row=0, column=1, padx=5, pady=5, sticky=tk.EW)
-        ttk.Label(query_frame, text=_("Query by TrayNumber:")).grid(row=0, column=2, padx=5, pady=5, sticky=tk.W)
-        self.query_tray_number_entry = ttk.Entry(query_frame)
-        self.query_tray_number_entry.grid(row=0, column=3, padx=5, pady=5, sticky=tk.EW)
-        self.search_button = ttk.Button(query_frame, text=_("Search"), command=self._search_records_handler)
-        self.search_button.grid(row=0, column=4, padx=10, pady=5)
-        query_frame.columnconfigure(1, weight=1)
-        query_frame.columnconfigure(3, weight=1)
+        # Clear Location by Criteria Frame - now parented to manage_records_tab
+        self.clear_by_criteria_frame = ttk.LabelFrame(self.manage_records_tab, text=_("Clear Location by Criteria"))
+        self.clear_by_criteria_frame.pack(side=tk.TOP, fill=tk.X, padx=5, pady=5, expand=False) # This was already correct
+        ttk.Label(self.clear_by_criteria_frame, text=_("MaterialID for Clear:")).grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
+        self.delete_material_id_entry = ttk.Entry(self.clear_by_criteria_frame)
+        self.delete_material_id_entry.grid(row=0, column=1, padx=5, pady=5, sticky=tk.EW)
+        ttk.Label(clear_criteria_frame, text=_("TrayNumber for Clear:")).grid(row=1, column=0, padx=5, pady=5, sticky=tk.W)
+        self.delete_tray_number_entry = ttk.Entry(self.clear_by_criteria_frame)
+        self.delete_tray_number_entry.grid(row=1, column=1, padx=5, pady=5, sticky=tk.EW)
+        self.clear_by_material_tray_button = ttk.Button(self.clear_by_criteria_frame, text=_("Clear by Mtrl+Tray"), command=self._clear_record_by_material_tray_handler)
+        self.clear_by_material_tray_button.grid(row=2, column=0, columnspan=2, padx=5, pady=10)
+        info_label_clear = _("Note: Clears record's MaterialID. Requires both MaterialID and TrayNumber.")
+        ttk.Label(self.clear_by_criteria_frame, text=info_label_clear, font=("Arial", 8)).grid(row=3, column=0, columnspan=2, padx=5, pady=2, sticky=tk.W)
+        self.clear_by_criteria_frame.columnconfigure(1, weight=1)
 
-        results_frame = ttk.LabelFrame(data_management_frame, text=_("Query Results"))
-        results_frame.pack(pady=10, padx=10, fill=tk.BOTH, expand=True)
+        # --- Tab 2: Search Locations ---
+        self.search_locations_tab = ttk.Frame(self.data_notebook)
+        self.data_notebook.add(self.search_locations_tab, text=_("Search Locations"))
+
+        # Query Locations Frame - now parented to search_locations_tab
+        self.query_locations_frame = ttk.LabelFrame(self.search_locations_tab, text=_("Query Locations"))
+        self.query_locations_frame.pack(side=tk.TOP, fill=tk.X, padx=5, pady=5, expand=False)
+        ttk.Label(self.query_locations_frame, text=_("Query by MaterialID:")).grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
+        self.query_material_id_entry = ttk.Entry(self.query_locations_frame)
+        self.query_material_id_entry.grid(row=0, column=1, padx=5, pady=5, sticky=tk.EW)
+        ttk.Label(self.query_locations_frame, text=_("Query by TrayNumber:")).grid(row=0, column=2, padx=5, pady=5, sticky=tk.W)
+        self.query_tray_number_entry = ttk.Entry(self.query_locations_frame)
+        self.query_tray_number_entry.grid(row=0, column=3, padx=5, pady=5, sticky=tk.EW)
+        self.search_button = ttk.Button(self.query_locations_frame, text=_("Search"), command=self._search_records_handler)
+        self.search_button.grid(row=0, column=4, padx=10, pady=5)
+        self.query_locations_frame.columnconfigure(1, weight=1)
+        self.query_locations_frame.columnconfigure(3, weight=1)
+
+        # Query Results Frame - now parented to search_locations_tab
+        self.query_results_frame = ttk.LabelFrame(self.search_locations_tab, text=_("Query Results"))
+        self.query_results_frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True, padx=5, pady=5)
         columns = ("LocationID", "MaterialID", "TrayNumber", "Timestamp", "ProcessID", "TaskID", "StatusNotes")
-        self.results_table = ttk.Treeview(results_frame, columns=columns, show="headings")
+        self.results_table = ttk.Treeview(self.query_results_frame, columns=columns, show="headings")
         col_defs = {
             "LocationID": {"text": _("Loc. ID"), "width": 60},
             "MaterialID": {"text": _("Material ID"), "width": 100},
@@ -311,27 +341,13 @@ class ServiceManagerApp:
             self.results_table.heading(col_name, text=col_defs.get(col_name, {}).get("text", col_name))
             width = col_defs.get(col_name, {}).get("width", 100)
             self.results_table.column(col_name, width=width, anchor=tk.W)
-        vsb = ttk.Scrollbar(results_frame, orient="vertical", command=self.results_table.yview)
+        vsb = ttk.Scrollbar(self.query_results_frame, orient="vertical", command=self.results_table.yview) # Corrected parent
         vsb.pack(side=tk.RIGHT, fill=tk.Y)
-        hsb = ttk.Scrollbar(results_frame, orient="horizontal", command=self.results_table.xview)
+        hsb = ttk.Scrollbar(self.query_results_frame, orient="horizontal", command=self.results_table.xview) # Corrected parent
         hsb.pack(side=tk.BOTTOM, fill=tk.X)
         self.results_table.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
-        self.results_table.pack(fill=tk.BOTH, expand=True)
+        self.results_table.pack(fill=tk.BOTH, expand=True) # This is correct for Treeview within its frame
         self.results_table.bind("<<TreeviewSelect>>", self._on_table_row_select)
-
-        clear_criteria_frame = ttk.LabelFrame(data_management_frame, text=_("Clear Location by Criteria"))
-        clear_criteria_frame.pack(pady=10, padx=10, fill=tk.X)
-        ttk.Label(clear_criteria_frame, text=_("MaterialID for Clear:")).grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
-        self.delete_material_id_entry = ttk.Entry(clear_criteria_frame)
-        self.delete_material_id_entry.grid(row=0, column=1, padx=5, pady=5, sticky=tk.EW)
-        ttk.Label(clear_criteria_frame, text=_("TrayNumber for Clear:")).grid(row=1, column=0, padx=5, pady=5, sticky=tk.W)
-        self.delete_tray_number_entry = ttk.Entry(clear_criteria_frame)
-        self.delete_tray_number_entry.grid(row=1, column=1, padx=5, pady=5, sticky=tk.EW)
-        self.clear_by_material_tray_button = ttk.Button(clear_criteria_frame, text=_("Clear by Mtrl+Tray"), command=self._clear_record_by_material_tray_handler)
-        self.clear_by_material_tray_button.grid(row=2, column=0, columnspan=2, padx=5, pady=10)
-        info_label_clear = _("Note: Clears record's MaterialID. Requires both MaterialID and TrayNumber.")
-        ttk.Label(clear_criteria_frame, text=info_label_clear, font=("Arial", 8)).grid(row=3, column=0, columnspan=2, padx=5, pady=2, sticky=tk.W)
-        clear_criteria_frame.columnconfigure(1, weight=1)
 
     def _populate_language_combo(self):
         # Helper to populate language combo; called after UI is setup
