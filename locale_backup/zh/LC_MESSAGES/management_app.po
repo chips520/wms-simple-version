@@ -329,3 +329,6 @@ msgstr "HTTP错误 {status}: {reason}"
 
 msgid "Invalid JSON response"
 msgstr "无效的JSON响应"
+
+msgid "N/A"
+msgstr "不适用"

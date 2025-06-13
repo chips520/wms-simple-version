@@ -42,6 +42,7 @@
   "Material ID": "ç©æID",
   "MaterialID for Clear:": "æ¸é¤ç¨ç©æIDï¼",
   "MaterialID:": "ç©æIDï¼",
+  "N/A": "ä¸éç¨",
   "No record selected for update. LocationID is missing.": "æªéæ©è¦æ´æ°çè®°å½ãç¼ºå°ä½ç½®IDã",
   "No valid PID found to stop the service.": "æªæ¾å°ææPIDæ¥åæ­¢æå¡ã",
   "Note: Clears record's MaterialID. Requires both MaterialID and TrayNumber.": "æ³¨æï¼æ¸é¤è®°å½çç©æIDãéè¦åæ¶æä¾ç©æIDåæçå·ã",

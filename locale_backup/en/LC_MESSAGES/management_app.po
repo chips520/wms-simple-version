@@ -320,3 +320,6 @@ msgstr Record for MaterialID '{mat_id}', TrayNumber '{tray_num}' (LocationID: {l
 
 msgid "Failed to clear record for MaterialID '{mat_id}', TrayNumber '{tray_num}': {error}"
 msgstr Failed to clear record for MaterialID '{mat_id}', TrayNumber '{tray_num}': {error}
+
+msgid "N/A"
+msgstr "N/A"

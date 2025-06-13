@@ -557,8 +557,9 @@ class ServiceManagerApp:
         }
         success, response_data = self.api_service.create_location_record(payload)
         if success:
-            loc_id = response_data.get('LocationID', 'N/A') if isinstance(response_data, dict) else 'N/A'
-            messagebox.showinfo(_("Success"), _("Record added successfully. LocationID: {loc_id}").format(loc_id=loc_id))
+            loc_id_val = response_data.get('LocationID') if isinstance(response_data, dict) else None
+            loc_id_display = str(loc_id_val) if loc_id_val is not None else _("N/A")
+            messagebox.showinfo(_("Success"), _("Record added successfully. LocationID: {loc_id}").format(loc_id=loc_id_display))
             self._log_action(f"Record added via API: {response_data}")
             self._clear_record_form_handler()
         else:
