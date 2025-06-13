@@ -6,8 +6,7 @@ import logging
 import sys
 import requests
 import json
-import gettext
-import builtins
+from i18n_manager import I18nManager, get_i18n_manager, _, set_language
 
 # --- Configuration ---
 APP_NAME = "WMS Service Management" # Default English, will be translated by _() call in __init__
@@ -41,7 +40,7 @@ class ApiService:
         self.logger.info(f"ApiService base_url updated to: {self.base_url}") # Internal log
 
     def _handle_response(self, response):
-        _ = builtins.__dict__.get('_', lambda s: s) # Ensure _ is available
+        # _ = builtins.__dict__.get('_', lambda s: s) # Ensure _ is available
         try:
             response.raise_for_status()
             if response.status_code == 204:
@@ -62,7 +61,7 @@ class ApiService:
             return False, _("Request Error: {error}").format(error=e)
 
     def create_location_record(self, data: dict) -> tuple[bool, dict | str]:
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s)
         self.logger.info(f"API: Creating location record with data: {data}")
         try:
             response = requests.post(f"{self.base_url}/locations/", json=data, timeout=5)
@@ -72,7 +71,7 @@ class ApiService:
             return False, _("Connection Error: {error}").format(error=e)
 
     def get_location_records(self, params: dict = None) -> tuple[bool, list | str]:
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s)
         self.logger.info(f"API: Getting location records with params: {params if params else 'all'}")
         try:
             response = requests.get(f"{self.base_url}/locations/", params=params, timeout=5)
@@ -82,7 +81,7 @@ class ApiService:
             return False, _("Connection Error: {error}").format(error=e)
 
     def update_location_record(self, location_id: int, data: dict) -> tuple[bool, dict | str]:
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s)
         self.logger.info(f"API: Updating location record ID {location_id} with data: {data}")
         try:
             response = requests.put(f"{self.base_url}/locations/{location_id}", json=data, timeout=5)
@@ -92,7 +91,7 @@ class ApiService:
             return False, _("Connection Error: {error}").format(error=e)
 
     def delete_location_record_by_id(self, location_id: int) -> tuple[bool, str]:
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s)
         self.logger.info(f"API: Deleting location record ID {location_id}")
         try:
             response = requests.delete(f"{self.base_url}/locations/{location_id}", timeout=5)
@@ -102,7 +101,7 @@ class ApiService:
             return False, _("Connection Error: {error}").format(error=e)
 
     def find_location_id(self, material_id: str, tray_number: str) -> tuple[bool, int | str]:
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s)
         self.logger.info(f"API: Finding LocationID for MaterialID: '{material_id}', TrayNumber: '{tray_number}'")
         params_for_find = {}
         if material_id:
@@ -131,7 +130,7 @@ class ApiService:
         return True, location_id
 
     def clear_location_record_by_id(self, location_id: int) -> tuple[bool, dict | str]:
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s)
         self.logger.info(f"API: Clearing location record ID {location_id} using clear-one.")
         try:
             response = requests.post(f"{self.base_url}/locations/clear-one/", json={"LocationID": location_id}, timeout=5)
@@ -141,7 +140,7 @@ class ApiService:
             return False, _("Connection Error: {error}").format(error=e)
 
     def clear_record_by_material_tray(self, material_id: str, tray_number: str) -> tuple[bool, dict | str]:
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s)
         self.logger.info(f"API: Clearing record by MaterialID='{material_id}', TrayNumber='{tray_number}'")
         try:
             payload = {"MaterialID": material_id, "TrayNumber": tray_number}
@@ -157,17 +156,19 @@ class ServiceManagerApp:
         self.logger = logging.getLogger(__name__)
         self.config_file_path = os.path.abspath(CONFIG_FILE_NAME)
         
+        self.i18n = get_i18n_manager() # Initialize I18nManager
+
         # Define supported languages before loading config
         self.supported_languages = {"en": "English", "zh": "中文 (Chinese)"}
         
         self.service_config = self._load_config()
-
-        self.setup_translations() # Setup translations early
+        self.setup_language() # Setup language using I18nManager
         
         # Update supported_languages with translated names after translations are set up
+        # This assumes _ is now globally available from i18n_manager
         self.supported_languages = {"en": _("English"), "zh": _("中文 (Chinese)")}
 
-        self.root.title(_(APP_NAME)) # Now _ should be defined by gettext or fallback
+        self.root.title(_(APP_NAME))
         self.root.geometry("600x800")
 
         self.service_pid = None
@@ -183,36 +184,17 @@ class ServiceManagerApp:
         self._populate_config_ui_fields()
         self._populate_language_combo()
 
-
-    def setup_translations(self):
-        lang_code = self.service_config.get('language', 'en')
-        self.logger.info(f"Attempting to set up translations for language: {lang_code}")
-        try:
-            localedir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'locale')
-            # Set locale and encoding to handle UTF-8 properly
-            import locale
-            try:
-                # Set environment variables for UTF-8 encoding
-                os.environ['PYTHONIOENCODING'] = 'utf-8'
-                locale.setlocale(locale.LC_ALL, '')
-            except:
-                try:
-                    # Fallback for Windows
-                    locale.setlocale(locale.LC_ALL, 'C.UTF-8')
-                except:
-                    pass  # Ignore locale setting errors
-            
-            lang = gettext.translation('management_app', localedir=localedir, languages=[lang_code], fallback=True)
-            lang.install()
-            # Verify by translating a known string immediately
-            self.logger.info(f"Translations for language '{lang_code}' installed. Test: '{_('Service Control')}'")
-        except Exception as e:
-            self.logger.error(f"Failed to install translations for language '{lang_code}': {e}. Falling back to default strings.")
-            builtins.__dict__['_'] = lambda s: s
+    def setup_language(self):
+        # Ensure service_config is loaded before this is called if it relies on it.
+        # The original plan was to call this after _load_config.
+        lang_code = self.service_config.get('language', 'en') # Default to 'en'
+        self.logger.info(f"Setting application language to: {lang_code} using I18nManager.")
+        if not self.i18n.set_language(lang_code):
+            self.logger.warning(f"Failed to set language to {lang_code} via I18nManager. Using fallback: {self.i18n.get_current_language()}")
+        # The actual _ function for translations will be available globally via the import.
 
     def _setup_ui(self, root):
-        # This ensures _ is available from gettext or fallback before UI elements are created
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
 
         main_paned_window = ttk.PanedWindow(root, orient=tk.VERTICAL)
         main_paned_window.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
@@ -369,7 +351,7 @@ class ServiceManagerApp:
 
     def _populate_language_combo(self):
         # Helper to populate language combo; called after UI is setup
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         # The values in the combobox should also be translatable if they are "English", "Chinese"
         # For now, using the display names from supported_languages which are already translated
         # if _ is working correctly during their definition.
@@ -387,7 +369,7 @@ class ServiceManagerApp:
 
 
     def _populate_config_ui_fields(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         if hasattr(self, 'host_ip_entry') and hasattr(self, 'port_number_entry'):
             self.host_ip_entry.delete(0, tk.END)
             self.host_ip_entry.insert(0, self.service_config.get('host', DEFAULT_HOST))
@@ -398,12 +380,12 @@ class ServiceManagerApp:
             self.logger.error("Attempted to populate config UI fields before they were fully created.")
 
     def _get_display_language(self, lang_code: str) -> str:
-        _ = builtins.__dict__.get('_', lambda s: s) # Ensure _ is available
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         # This translates the *display name* from the dict, not the code.
         return self.supported_languages.get(lang_code, _("English"))
 
     def _get_language_code(self, display_lang: str) -> str:
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         for code, display_name_func  in self.supported_languages.items():
             # Since display names are translated, we need to compare against translated display name
             # This is tricky if _ isn't the one used at definition time.
@@ -415,7 +397,7 @@ class ServiceManagerApp:
         return "en" # Default to English if not found
 
     def _load_config(self) -> dict:
-        _ = builtins.__dict__.get('_', lambda s: s) # Ensure _ is available for logs
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available for logs
         self.logger.info(f"Attempting to load configuration from: {self.config_file_path}")
         host = DEFAULT_HOST
         port = DEFAULT_PORT
@@ -452,7 +434,7 @@ class ServiceManagerApp:
         return final_config
 
     def _save_config_handler(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self.logger.info(_("Save configuration button clicked."))
         host_val = self.host_ip_entry.get().strip()
         port_str_val = self.port_number_entry.get().strip()
@@ -479,7 +461,19 @@ class ServiceManagerApp:
 
         if save_successful:
             self._populate_config_ui_fields()
-            self._populate_language_combo() # Repopulate language combo to ensure it reflects saved state
+            # self._populate_language_combo() # Moved down after i18n update
+
+            if self.i18n.set_language(lang_code):
+                self.logger.info(f"I18nManager language updated to {lang_code} in current session.")
+                # Update self.supported_languages dictionary with newly translated values
+                self.supported_languages = {"en": _("English"), "zh": _("中文 (Chinese)")}
+                # Repopulate language combo to reflect the potentially new _() output
+                self._populate_language_combo()
+            else:
+                self.logger.warning(f"Failed to update I18nManager language to {lang_code} in current session.")
+                # Still call populate, as host/port might have changed
+                self._populate_language_combo()
+
             messagebox.showinfo(_("Configuration Saved"),
                                 _("Configuration has been saved successfully.\n\n"
                                   "If the WMS service is currently running, "
@@ -492,7 +486,7 @@ class ServiceManagerApp:
             self.logger.error("Configuration save handler failed.")
 
     def _save_config(self, host: str, port: int, language: str) -> bool: # Added language param
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self.logger.info(_("Attempting to save configuration: Host='{host}', Port={port}, Language='{lang}'").format(host=host, port=port, lang=language))
 
         if not isinstance(host, str) or not host.strip():
@@ -530,7 +524,7 @@ class ServiceManagerApp:
             return False
 
     def _clear_record_form_handler(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self._log_action("Clearing record form.")
         self.location_id_entry.config(state=tk.NORMAL)
         self.location_id_entry.delete(0, tk.END)
@@ -546,7 +540,7 @@ class ServiceManagerApp:
         self.material_id_entry.focus()
 
     def _add_record_handler(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self._log_action("Add record button clicked.")
         material_id = self.material_id_entry.get().strip()
         tray_number = self.tray_number_entry.get().strip()
@@ -572,7 +566,7 @@ class ServiceManagerApp:
             self._log_action(f"API failed to add record: {response_data}", logging.ERROR)
 
     def _update_record_handler(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self._log_action("Update record button clicked.")
         if self.selected_location_id_for_update is None:
             messagebox.showerror(_("Error"), _("No record selected for update. LocationID is missing."))
@@ -597,6 +591,7 @@ class ServiceManagerApp:
             self._log_action(f"API failed to update record {location_id}: {response_data}", logging.ERROR)
 
     def _populate_form_on_selection(self, selected_record_data: dict):
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available, but this method only logs
         self._log_action(f"Populating form with selected record: {selected_record_data.get('LocationID')}")
         self._clear_record_form_handler()
         self.location_id_entry.config(state=tk.NORMAL)
@@ -621,12 +616,13 @@ class ServiceManagerApp:
             self.update_record_button.config(state=tk.DISABLED)
 
     def _clear_results_table(self):
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available, only logging here
         self._log_action("Clearing results table.")
         for item in self.results_table.get_children():
             self.results_table.delete(item)
 
     def _populate_results_table(self, records: list):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self._log_action(f"Populating results table with {len(records)} records.")
         self._clear_results_table()
         for record in records:
@@ -639,7 +635,7 @@ class ServiceManagerApp:
             self.results_table.insert("", tk.END, values=values)
 
     def _search_records_handler(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self._log_action("Search records button clicked.")
         query_material_id = self.query_material_id_entry.get().strip()
         query_tray_number = self.query_tray_number_entry.get().strip()
@@ -663,6 +659,7 @@ class ServiceManagerApp:
             self._clear_results_table()
 
     def _on_table_row_select(self, event):
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available, only logging here
         selected_items = self.results_table.selection()
         if not selected_items:
             return
@@ -677,7 +674,7 @@ class ServiceManagerApp:
         self._populate_form_on_selection(selected_record_data)
 
     def _clear_record_by_material_tray_handler(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         material_id = self.delete_material_id_entry.get().strip()
         tray_number = self.delete_tray_number_entry.get().strip()
         self._log_action(f"Clear by Mtrl+Tray button clicked for MaterialID: '{material_id}', TrayNumber: '{tray_number}'.")
@@ -715,7 +712,7 @@ class ServiceManagerApp:
         return [python_exe, "-m", "uvicorn", f"{main_module_name}:app", f"--host={uvicorn_host}", f"--port={uvicorn_port}"]
 
     def initial_status_check(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self._log_action("Performing initial WMS service status check.")
         if os.path.exists(PID_FILE):
             try:
@@ -769,7 +766,7 @@ class ServiceManagerApp:
             self.restart_button.config(state=tk.DISABLED)
 
     def start_service(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self._log_action("Attempting to start WMS service...")
         if self.service_pid:
             messagebox.showwarning(_("Service Info"), _("Service is already running."))
@@ -797,7 +794,7 @@ class ServiceManagerApp:
         self.update_button_states()
 
     def stop_service(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self._log_action("Attempting to stop WMS service...")
         pid_to_stop = self.service_pid
         if not pid_to_stop:
@@ -856,12 +853,13 @@ class ServiceManagerApp:
         self.update_button_states()
 
     def restart_service(self):
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available, only logging here
         self._log_action("Attempting to restart WMS service...")
         self.stop_service()
         self.root.after(1000, self.start_service)
 
     def _check_task_exists(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         try:
             result = subprocess.run(['schtasks', '/Query', '/TN', TASK_NAME], capture_output=True, text=True, check=False, creationflags=subprocess.CREATE_NO_WINDOW)
             return result.returncode == 0 and TASK_NAME in result.stdout
@@ -884,7 +882,7 @@ class ServiceManagerApp:
             self._log_action(f"Auto-start task '{TASK_NAME}' is disabled or not found.")
 
     def enable_auto_start(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self._log_action(f"Attempting to enable auto-start (Task: {TASK_NAME})...")
         python_exe = sys.executable
         script_dir = os.path.abspath(os.path.dirname(__file__))
@@ -928,7 +926,7 @@ class ServiceManagerApp:
         self.update_auto_start_buttons_status()
 
     def disable_auto_start(self):
-        _ = builtins.__dict__.get('_', lambda s: s)
+        # _ = builtins.__dict__.get('_', lambda s: s) # Removed: _ should be globally available
         self._log_action(f"Attempting to disable auto-start (Task: {TASK_NAME})...")
         schtasks_command = ['schtasks', '/Delete', '/TN', TASK_NAME, '/F']
         try:
