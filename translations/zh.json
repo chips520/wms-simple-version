@@ -17,6 +17,7 @@
   "Configuration Saved": "éç½®å·²ä¿å­",
   "Configuration has been saved successfully.\n\nIf the WMS service is currently running, you may need to restart it for changes to its listening address or port to take full effect.": "éç½®å·²æåä¿å­ã\n\nå¦æWMSæå¡å½åæ­£å¨è¿è¡ï¼æ¨å¯è½éè¦éå¯å®ä»¥ä½¿çå¬å°åæç«¯å£çæ´æ¹å®å¨çæã",
   "Confirm Clear": "ç¡®è®¤æ¸é¤",
+  "Connection Error: {error}": "è¿æ¥éè¯¯: {error}",
   "Data Management": "æ°æ®ç®¡ç",
   "Disable Auto-start": "ç¦ç¨èªå¨å¯å¨",
   "Enable Auto-start": "å¯ç¨èªå¨å¯å¨",
@@ -32,8 +33,10 @@
   "Failed to stop WMS service with taskkill: {error}. It might still be running.": "ä½¿ç¨taskkillåæ­¢WMSæå¡å¤±è´¥ï¼{error}ãæå¡å¯è½ä»å¨è¿è¡ã",
   "Failed to update record {loc_id}: {error}": "æ´æ°è®°å½ {loc_id} å¤±è´¥ï¼{error}",
   "Found {count} record(s).": "æ¾å° {count} æ¡è®°å½ã",
+  "HTTP Error {status}: {reason}": "HTTPéè¯¯ {status}: {reason}",
   "Host IP Address:": "ä¸»æºIPå°åï¼",
   "Host IP address cannot be empty.": "ä¸»æºIPå°åä¸è½ä¸ºç©ºã",
+  "Invalid JSON response": "æ æçJSONååº",
   "Loc. ID": "ä½ç½®ID",
   "LocationID:": "ä½ç½®IDï¼",
   "Material ID": "ç©æID",

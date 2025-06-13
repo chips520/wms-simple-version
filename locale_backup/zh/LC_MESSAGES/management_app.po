@@ -320,3 +320,12 @@ msgstr "物料ID '{mat_id}'，托盘号 '{tray_num}' (位置ID: {loc_id}) 的记
 
 msgid "Failed to clear record for MaterialID '{mat_id}', TrayNumber '{tray_num}': {error}"
 msgstr "清除物料ID '{mat_id}'，托盘号 '{tray_num}' 的记录失败：{error}"
+
+msgid "Connection Error: {error}"
+msgstr "连接错误: {error}"
+
+msgid "HTTP Error {status}: {reason}"
+msgstr "HTTP错误 {status}: {reason}"
+
+msgid "Invalid JSON response"
+msgstr "无效的JSON响应"
