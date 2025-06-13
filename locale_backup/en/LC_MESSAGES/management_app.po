@@ -1,14 +1,14 @@
 # Simplified POT file for WMS Management App
 #
 msgid ""
-msgstr "[zh]
+msgstr
 "Project-Id-Version: management_app 1.0\n"
 "POT-Creation-Date: 2024-07-01 12:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically Generated\n"
 "Language-Team: None\n"
-"Language: zh\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,307 +16,307 @@ msgstr "[zh]
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "WMS Service Management"
-msgstr "WMS服务管理"
+msgstr WMS Service Management
 
 msgid "Service Control"
-msgstr "服务控制"
+msgstr Service Control
 
 msgid "Status: Unknown"
-msgstr "状态：未知"
+msgstr Status: Unknown
 
 msgid "Start Service"
-msgstr "启动服务"
+msgstr Start Service
 
 msgid "Stop Service"
-msgstr "停止服务"
+msgstr Stop Service
 
 msgid "Restart Service"
-msgstr "重启服务"
+msgstr Restart Service
 
 msgid "Enable Auto-start"
-msgstr "启用自动启动"
+msgstr Enable Auto-start
 
 msgid "Disable Auto-start"
-msgstr "禁用自动启动"
+msgstr Disable Auto-start
 
 msgid "Service Host/Port Configuration"
-msgstr "服务主机/端口配置"
+msgstr Service Host/Port Configuration
 
 msgid "Host IP Address:"
-msgstr "主机IP地址："
+msgstr Host IP Address:
 
 msgid "Port Number:"
-msgstr "端口号："
+msgstr Port Number:
 
 msgid "Save Configuration"
-msgstr "保存配置"
+msgstr Save Configuration
 
 msgid "Data Management"
-msgstr "数据管理"
+msgstr Data Management
 
 msgid "Record Details"
-msgstr "记录详情"
+msgstr Record Details
 
 msgid "LocationID:"
-msgstr "位置ID："
+msgstr LocationID:
 
 msgid "MaterialID:"
-msgstr "物料ID："
+msgstr MaterialID:
 
 msgid "TrayNumber:"
-msgstr "托盘号："
+msgstr TrayNumber:
 
 msgid "ProcessID:"
-msgstr "工艺ID："
+msgstr ProcessID:
 
 msgid "TaskID:"
-msgstr "任务ID："
+msgstr TaskID:
 
 msgid "StatusNotes:"
-msgstr "状态备注："
+msgstr StatusNotes:
 
 msgid "Timestamp:"
-msgstr "时间戳："
+msgstr Timestamp:
 
 msgid "Add Record"
-msgstr "添加记录"
+msgstr Add Record
 
 msgid "Update Selected Record"
-msgstr "更新选中记录"
+msgstr Update Selected Record
 
 msgid "Clear Form"
-msgstr "清空表单"
+msgstr Clear Form
 
 msgid "Query Locations"
-msgstr "查询位置"
+msgstr Query Locations
 
 msgid "Query by MaterialID:"
-msgstr "按物料ID查询："
+msgstr Query by MaterialID:
 
 msgid "Query by TrayNumber:"
-msgstr "按托盘号查询："
+msgstr Query by TrayNumber:
 
 msgid "Search"
-msgstr "搜索"
+msgstr Search
 
 msgid "Query Results"
-msgstr "查询结果"
+msgstr Query Results
 
 msgid "Loc. ID"
-msgstr "位置ID"
+msgstr Loc. ID
 
 msgid "Material ID"
-msgstr "物料ID"
+msgstr Material ID
 
 msgid "Tray No."
-msgstr "托盘号"
+msgstr Tray No.
 
 # Timestamp is also a column header, reusing
 # msgid "Timestamp"
 # msgstr ""
 
 msgid "Process ID"
-msgstr "工艺ID"
+msgstr Process ID
 
 msgid "Task ID"
-msgstr "任务ID"
+msgstr Task ID
 
 msgid "Status Notes"
-msgstr "状态备注"
+msgstr Status Notes
 
 msgid "Clear Location by Criteria"
-msgstr "按条件清除位置"
+msgstr Clear Location by Criteria
 
 msgid "MaterialID for Clear:"
-msgstr "清除用物料ID："
+msgstr MaterialID for Clear:
 
 msgid "TrayNumber for Clear:"
-msgstr "清除用托盘号："
+msgstr TrayNumber for Clear:
 
 msgid "Clear by Mtrl+Tray"
-msgstr "按物料+托盘清除"
+msgstr Clear by Mtrl+Tray
 
 msgid "Note: Clears record's MaterialID. Requires both MaterialID and TrayNumber."
-msgstr "注意：清除记录的物料ID。需要同时提供物料ID和托盘号。"
+msgstr Note: Clears record's MaterialID. Requires both MaterialID and TrayNumber.
 
 # Messagebox Titles
 msgid "Service Info"
-msgstr "服务信息"
+msgstr Service Info
 
 msgid "Error"
-msgstr "错误"
+msgstr Error
 
 msgid "Service Control Error"
-msgstr "服务控制错误"
+msgstr Service Control Error
 
 msgid "Auto-start Error"
-msgstr "自动启动错误"
+msgstr Auto-start Error
 
 msgid "Auto-start Info"
-msgstr "自动启动信息"
+msgstr Auto-start Info
 
 msgid "Validation Error"
-msgstr "验证错误"
+msgstr Validation Error
 
 msgid "Success"
-msgstr "成功"
+msgstr Success
 
 msgid "API Error"
-msgstr "API错误"
+msgstr API Error
 
 msgid "Confirm Clear"
-msgstr "确认清除"
+msgstr Confirm Clear
 
 msgid "Search Results"
-msgstr "搜索结果"
+msgstr Search Results
 
 msgid "Configuration Saved"
-msgstr "配置已保存"
+msgstr Configuration Saved
 
 msgid "Save Error"
-msgstr "保存错误"
+msgstr Save Error
 
 # Messagebox Messages (examples, especially formatted ones)
 msgid "Status: Running (PID: {pid_val})"
-msgstr "状态：运行中 (PID: {pid_val})"
+msgstr Status: Running (PID: {pid_val})
 
 msgid "Status: Stopped"
-msgstr "状态：已停止"
+msgstr Status: Stopped
 
 msgid "Status: Error - {python_file} not found"
-msgstr "状态：错误 - 未找到 {python_file}"
+msgstr Status: Error - {python_file} not found
 
 msgid "Status: Error starting"
-msgstr "状态：启动错误"
+msgstr Status: Error starting
 
 msgid "Status: Stopped (Stale PID)"
-msgstr "状态：已停止 (过期PID)"
+msgstr Status: Stopped (Stale PID)
 
 msgid "Status: Error (Invalid PID file)"
-msgstr "状态：错误 (无效PID文件)"
+msgstr Status: Error (Invalid PID file)
 
 msgid "Status: Stopped (PID file was empty)"
-msgstr "状态：已停止 (PID文件为空)"
+msgstr Status: Stopped (PID file was empty)
 
 msgid "Status: Error checking PID"
-msgstr "状态：检查PID错误"
+msgstr Status: Error checking PID
 
 msgid "Service is already running."
-msgstr "服务已在运行。"
+msgstr Service is already running.
 
 msgid "{python_file} not found. Cannot start service."
-msgstr "未找到 {python_file}。无法启动服务。"
+msgstr {python_file} not found. Cannot start service.
 
 msgid "WMS Service started successfully."
-msgstr "WMS服务启动成功。"
+msgstr WMS Service started successfully.
 
 msgid "Failed to start WMS service: {error}"
-msgstr "启动WMS服务失败：{error}"
+msgstr Failed to start WMS service: {error}
 
 msgid "Service PID not found, cannot stop if not started by this manager instance or PID file is missing/corrupt."
-msgstr "未找到服务PID，如果服务不是由此管理器实例启动或PID文件丢失/损坏，则无法停止。"
+msgstr Service PID not found, cannot stop if not started by this manager instance or PID file is missing/corrupt.
 
 msgid "Service is not recorded as running (empty PID file)."
-msgstr "服务未记录为运行状态（PID文件为空）。"
+msgstr Service is not recorded as running (empty PID file).
 
 msgid "Service PID file is corrupt or unreadable."
-msgstr "服务PID文件损坏或不可读。"
+msgstr Service PID file is corrupt or unreadable.
 
 msgid "Service is not recorded as running."
-msgstr "服务未记录为运行状态。"
+msgstr Service is not recorded as running.
 
 msgid "No valid PID found to stop the service."
-msgstr "未找到有效PID来停止服务。"
+msgstr No valid PID found to stop the service.
 
 msgid "WMS Service stopped successfully."
-msgstr "WMS服务停止成功。"
+msgstr WMS Service stopped successfully.
 
 msgid "Status: Stopped (taskkill error but process gone)"
-msgstr "状态：已停止 (taskkill错误但进程已消失)"
+msgstr Status: Stopped (taskkill error but process gone)
 
 msgid "Failed to stop WMS service with taskkill: {error}. It might still be running."
-msgstr "使用taskkill停止WMS服务失败：{error}。服务可能仍在运行。"
+msgstr Failed to stop WMS service with taskkill: {error}. It might still be running.
 
 msgid "Status: Error stopping"
-msgstr "状态：停止错误"
+msgstr Status: Error stopping
 
 msgid "An unexpected error occurred while stopping WMS service: {error}"
-msgstr "停止WMS服务时发生意外错误：{error}"
+msgstr An unexpected error occurred while stopping WMS service: {error}
 
 msgid "Task Scheduler command (schtasks) not found. Is this a Windows environment?"
-msgstr "未找到任务计划程序命令(schtasks)。这是Windows环境吗？"
+msgstr Task Scheduler command (schtasks) not found. Is this a Windows environment?
 
 msgid "Failed to create helper batch script for auto-start: {error}"
-msgstr "创建自动启动辅助批处理脚本失败：{error}"
+msgstr Failed to create helper batch script for auto-start: {error}
 
 msgid "Auto-start enabled for WMS service via Task '{task_name}'."
-msgstr "已通过任务'{task_name}'为WMS服务启用自动启动。"
+msgstr Auto-start enabled for WMS service via Task '{task_name}'.
 
 msgid "Failed to enable auto-start (schtasks error): {error}"
-msgstr "启用自动启动失败(schtasks错误)：{error}"
+msgstr Failed to enable auto-start (schtasks error): {error}
 
 msgid "An unexpected error occurred while enabling auto-start: {error}"
-msgstr "启用自动启动时发生意外错误：{error}"
+msgstr An unexpected error occurred while enabling auto-start: {error}
 
 msgid "Auto-start disabled for WMS service."
-msgstr "已禁用WMS服务的自动启动。"
+msgstr Auto-start disabled for WMS service.
 
 msgid "Auto-start task '{task_name}' was not found (already disabled)."
-msgstr "未找到自动启动任务'{task_name}'（已禁用）。"
+msgstr Auto-start task '{task_name}' was not found (already disabled).
 
 msgid "Failed to disable auto-start (schtasks error): {error}"
-msgstr "禁用自动启动失败(schtasks错误)：{error}"
+msgstr Failed to disable auto-start (schtasks error): {error}
 
 msgid "An unexpected error occurred while disabling auto-start: {error}"
-msgstr "禁用自动启动时发生意外错误：{error}"
+msgstr An unexpected error occurred while disabling auto-start: {error}
 
 msgid "Host IP address cannot be empty."
-msgstr "主机IP地址不能为空。"
+msgstr Host IP address cannot be empty.
 
 msgid "Port number must be an integer."
-msgstr "端口号必须是整数。"
+msgstr Port number must be an integer.
 
 msgid "Port number must be between 1 and 65535."
-msgstr "端口号必须在1到65535之间。"
+msgstr Port number must be between 1 and 65535.
 
 msgid "Configuration has been saved successfully.\n\nIf the WMS service is currently running, you may need to restart it for changes to its listening address or port to take full effect."
-msgstr "配置已成功保存。\n\n如果WMS服务当前正在运行，您可能需要重启它以使监听地址或端口的更改完全生效。"
+msgstr Configuration has been saved successfully.\n\nIf the WMS service is currently running, you may need to restart it for changes to its listening address or port to take full effect.
 
 msgid "Failed to save configuration. Please check the logs for more details."
-msgstr "保存配置失败。请检查日志以获取更多详细信息。"
+msgstr Failed to save configuration. Please check the logs for more details.
 
 msgid "Record added successfully. LocationID: {loc_id}"
-msgstr "记录添加成功。位置ID：{loc_id}"
+msgstr Record added successfully. LocationID: {loc_id}
 
 msgid "Failed to add record: {error}"
-msgstr "添加记录失败：{error}"
+msgstr Failed to add record: {error}
 
 msgid "No record selected for update. LocationID is missing."
-msgstr "未选择要更新的记录。缺少位置ID。"
+msgstr No record selected for update. LocationID is missing.
 
 msgid "Record {loc_id} updated successfully."
-msgstr "记录 {loc_id} 更新成功。"
+msgstr Record {loc_id} updated successfully.
 
 msgid "Failed to update record {loc_id}: {error}"
-msgstr "更新记录 {loc_id} 失败：{error}"
+msgstr Failed to update record {loc_id}: {error}
 
 msgid "Found {count} record(s)."
-msgstr "找到 {count} 条记录。"
+msgstr Found {count} record(s).
 
 msgid "Received unexpected data format from API."
-msgstr "从API接收到意外的数据格式。"
+msgstr Received unexpected data format from API.
 
 msgid "Failed to search records: {error}"
-msgstr "搜索记录失败：{error}"
+msgstr Failed to search records: {error}
 
 msgid "Both MaterialID and TrayNumber are required to clear a record."
-msgstr "清除记录需要同时提供物料ID和托盘号。"
+msgstr Both MaterialID and TrayNumber are required to clear a record.
 
 msgid "Are you sure you want to clear the record for Material ID: '{mat_id}' and Tray Number: '{tray_num}'?\nThis will mark the location as empty."
-msgstr "您确定要清除物料ID：'{mat_id}' 和托盘号：'{tray_num}' 的记录吗？\n这将把该位置标记为空。"
+msgstr Are you sure you want to clear the record for Material ID: '{mat_id}' and Tray Number: '{tray_num}'?\nThis will mark the location as empty.
 
 msgid "Record for MaterialID '{mat_id}', TrayNumber '{tray_num}' (LocationID: {loc_id}) cleared successfully."
-msgstr "物料ID '{mat_id}'，托盘号 '{tray_num}' (位置ID: {loc_id}) 的记录清除成功。"
+msgstr Record for MaterialID '{mat_id}', TrayNumber '{tray_num}' (LocationID: {loc_id}) cleared successfully.
 
 msgid "Failed to clear record for MaterialID '{mat_id}', TrayNumber '{tray_num}': {error}"
-msgstr "清除物料ID '{mat_id}'，托盘号 '{tray_num}' 的记录失败：{error}"
+msgstr Failed to clear record for MaterialID '{mat_id}', TrayNumber '{tray_num}': {error}

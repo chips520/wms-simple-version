@@ -1,0 +1,320 @@
+2025-06-12 13:40:22,714 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-12 13:40:22,714 - INFO - Configuration file 'F:\2025PR\wms\wmsjules2\service_config.json' not found. Using defaults. Will be created if config is saved.
+2025-06-12 13:40:22,717 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-12 13:40:22,717 - INFO - Attempting to set up translations for language: en
+2025-06-12 13:40:22,718 - INFO - Translations for language 'en' installed. Test: 'Service Control'
+2025-06-12 14:36:41,922 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-12 14:36:41,922 - INFO - Configuration file 'F:\2025PR\wms\wmsjules2\service_config.json' not found. Using defaults. Will be created if config is saved.
+2025-06-12 14:36:41,923 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-12 14:36:41,923 - INFO - Attempting to set up translations for language: en
+2025-06-12 14:36:41,924 - INFO - Translations for language 'en' installed. Test: 'Service Control'
+2025-06-12 14:36:55,941 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-12 14:36:55,943 - INFO - Configuration file 'F:\2025PR\wms\wmsjules2\service_config.json' not found. Using defaults. Will be created if config is saved.
+2025-06-12 14:36:55,943 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-12 14:36:55,944 - INFO - Attempting to set up translations for language: en
+2025-06-12 14:36:55,945 - INFO - Translations for language 'en' installed. Test: 'Service Control'
+2025-06-13 13:13:03,534 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 13:13:03,550 - INFO - Configuration file 'F:\2025PR\wms\wmsjules2\service_config.json' not found. Using defaults. Will be created if config is saved.
+2025-06-13 13:13:03,550 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-13 13:13:03,550 - INFO - Attempting to set up translations for language: en
+2025-06-13 13:13:03,551 - INFO - Translations for language 'en' installed. Test: 'Service Control'
+2025-06-13 13:14:01,985 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 13:14:01,985 - INFO - Configuration file 'F:\2025PR\wms\wmsjules2\service_config.json' not found. Using defaults. Will be created if config is saved.
+2025-06-13 13:14:01,986 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-13 13:14:01,986 - INFO - Attempting to set up translations for language: en
+2025-06-13 13:14:01,987 - INFO - Translations for language 'en' installed. Test: 'Service Control'
+2025-06-13 13:14:23,928 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 13:14:23,930 - INFO - Configuration file 'F:\2025PR\wms\wmsjules2\service_config.json' not found. Using defaults. Will be created if config is saved.
+2025-06-13 13:14:23,931 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-13 13:14:23,931 - INFO - Attempting to set up translations for language: en
+2025-06-13 13:14:23,933 - INFO - Translations for language 'en' installed. Test: 'Service Control'
+2025-06-13 13:14:24,105 - INFO - Performing initial WMS service status check.
+2025-06-13 13:14:24,107 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 13:14:24,192 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 13:14:24,194 - INFO - Clearing record form.
+2025-06-13 13:14:24,195 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 13:14:24,196 - INFO - Language dropdown populated. Current selection: English (en)
+2025-06-13 13:14:41,412 - INFO - Clear by Mtrl+Tray button clicked for MaterialID: '', TrayNumber: ''.
+2025-06-13 13:14:42,929 - WARNING - Clear by Mtrl+Tray validation failed: MaterialID or TrayNumber empty.
+2025-06-13 13:14:53,202 - INFO - Save configuration button clicked.
+2025-06-13 13:14:53,202 - INFO - Attempting to save configuration: Host='127.0.0.1', Port=8000, Language='zh'
+2025-06-13 13:14:53,204 - INFO - ApiService base_url updated to: http://127.0.0.1:8000
+2025-06-13 13:14:53,204 - INFO - Configuration saved successfully to 'F:\2025PR\wms\wmsjules2\service_config.json': {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 13:14:53,205 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 13:14:53,205 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 13:14:54,100 - INFO - Configuration save handler completed successfully.
+2025-06-13 13:15:07,721 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 13:15:07,722 - ERROR - Unexpected error loading config: 'ServiceManagerApp' object has no attribute 'supported_languages'. Using defaults.
+2025-06-13 13:15:07,723 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 13:15:07,723 - INFO - Attempting to set up translations for language: zh
+2025-06-13 13:15:07,740 - INFO - Translations for language 'zh' installed. Test: '[zh] ervice Control'
+2025-06-13 13:15:07,983 - INFO - Performing initial WMS service status check.
+2025-06-13 13:15:07,984 - INFO - Initial status check complete. Status: [zh] tatus: Stopped
+2025-06-13 13:15:08,042 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 13:15:08,045 - INFO - Clearing record form.
+2025-06-13 13:15:08,045 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 13:15:08,053 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 13:45:38,098 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 13:45:38,099 - ERROR - Unexpected error loading config: 'ServiceManagerApp' object has no attribute 'supported_languages'. Using defaults.
+2025-06-13 13:45:38,100 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 13:45:38,100 - INFO - Attempting to set up translations for language: zh
+2025-06-13 13:45:38,101 - ERROR - Failed to install translations for language 'zh': 'ascii' codec can't decode byte 0xe9 in position 3: ordinal not in range(128). Falling back to default strings.
+2025-06-13 13:45:38,169 - INFO - Performing initial WMS service status check.
+2025-06-13 13:45:38,170 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 13:45:38,219 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 13:45:38,219 - INFO - Clearing record form.
+2025-06-13 13:45:38,220 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 13:45:38,226 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 13:45:42,673 - INFO - Save configuration button clicked.
+2025-06-13 13:45:42,674 - INFO - Attempting to save configuration: Host='127.0.0.1', Port=8000, Language='en'
+2025-06-13 13:45:42,675 - INFO - ApiService base_url updated to: http://127.0.0.1:8000
+2025-06-13 13:45:42,676 - INFO - Configuration saved successfully to 'F:\2025PR\wms\wmsjules2\service_config.json': {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-13 13:45:42,677 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 13:45:42,677 - INFO - Language dropdown populated. Current selection: English (en)
+2025-06-13 13:45:43,708 - INFO - Configuration save handler completed successfully.
+2025-06-13 13:46:07,987 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 13:46:07,988 - ERROR - Unexpected error loading config: 'ServiceManagerApp' object has no attribute 'supported_languages'. Using defaults.
+2025-06-13 13:46:07,989 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-13 13:46:07,989 - INFO - Attempting to set up translations for language: en
+2025-06-13 13:46:07,991 - INFO - Translations for language 'en' installed. Test: 'Service Control'
+2025-06-13 13:46:08,104 - INFO - Performing initial WMS service status check.
+2025-06-13 13:46:08,105 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 13:46:08,153 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 13:46:08,154 - INFO - Clearing record form.
+2025-06-13 13:46:08,154 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 13:46:08,155 - INFO - Language dropdown populated. Current selection: English (en)
+2025-06-13 13:46:31,240 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 13:46:31,242 - ERROR - Unexpected error loading config: 'ServiceManagerApp' object has no attribute 'supported_languages'. Using defaults.
+2025-06-13 13:46:31,242 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-13 13:46:31,243 - INFO - Attempting to set up translations for language: en
+2025-06-13 13:46:31,244 - INFO - Translations for language 'en' installed. Test: 'Service Control'
+2025-06-13 13:46:31,377 - INFO - Performing initial WMS service status check.
+2025-06-13 13:46:31,378 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 13:46:31,426 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 13:46:31,427 - INFO - Clearing record form.
+2025-06-13 13:46:31,427 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 13:46:31,428 - INFO - Language dropdown populated. Current selection: English (en)
+2025-06-13 13:46:33,899 - INFO - Save configuration button clicked.
+2025-06-13 13:46:33,899 - INFO - Attempting to save configuration: Host='127.0.0.1', Port=8000, Language='zh'
+2025-06-13 13:46:33,901 - INFO - ApiService base_url updated to: http://127.0.0.1:8000
+2025-06-13 13:46:33,901 - INFO - Configuration saved successfully to 'F:\2025PR\wms\wmsjules2\service_config.json': {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 13:46:33,902 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 13:46:33,902 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 13:46:34,844 - INFO - Configuration save handler completed successfully.
+2025-06-13 13:46:39,897 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 13:46:39,898 - ERROR - Unexpected error loading config: 'ServiceManagerApp' object has no attribute 'supported_languages'. Using defaults.
+2025-06-13 13:46:39,898 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 13:46:39,898 - INFO - Attempting to set up translations for language: zh
+2025-06-13 13:46:39,899 - ERROR - Failed to install translations for language 'zh': 'ascii' codec can't decode byte 0xe9 in position 3: ordinal not in range(128). Falling back to default strings.
+2025-06-13 13:46:40,020 - INFO - Performing initial WMS service status check.
+2025-06-13 13:46:40,021 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 13:46:40,081 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 13:46:40,082 - INFO - Clearing record form.
+2025-06-13 13:46:40,083 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 13:46:40,090 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 14:14:37,259 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 14:14:37,260 - ERROR - Unexpected error loading config: 'ServiceManagerApp' object has no attribute 'supported_languages'. Using defaults.
+2025-06-13 14:14:37,261 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 14:14:37,261 - INFO - Attempting to set up translations for language: zh
+2025-06-13 14:14:37,262 - ERROR - Failed to install translations for language 'zh': 'ascii' codec can't decode byte 0xe9 in position 3: ordinal not in range(128). Falling back to default strings.
+2025-06-13 14:14:37,366 - INFO - Performing initial WMS service status check.
+2025-06-13 14:14:37,367 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 14:14:37,436 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 14:14:37,437 - INFO - Clearing record form.
+2025-06-13 14:14:37,438 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 14:14:37,448 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 14:15:30,602 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 14:15:30,603 - ERROR - Unexpected error loading config: 'ServiceManagerApp' object has no attribute 'supported_languages'. Using defaults.
+2025-06-13 14:15:30,603 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 14:15:30,604 - INFO - Attempting to set up translations for language: zh
+2025-06-13 14:15:30,605 - ERROR - Failed to install translations for language 'zh': 'ascii' codec can't decode byte 0xe9 in position 3: ordinal not in range(128). Falling back to default strings.
+2025-06-13 14:15:30,740 - INFO - Performing initial WMS service status check.
+2025-06-13 14:15:30,741 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 14:15:30,803 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 14:15:30,803 - INFO - Clearing record form.
+2025-06-13 14:15:30,804 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 14:15:30,814 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 14:17:42,324 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 14:17:42,326 - ERROR - Unexpected error loading config: 'ServiceManagerApp' object has no attribute 'supported_languages'. Using defaults.
+2025-06-13 14:17:42,327 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 14:17:42,328 - INFO - Attempting to set up translations for language: zh
+2025-06-13 14:17:42,329 - ERROR - Failed to install translations for language 'zh': 'ascii' codec can't decode byte 0xe9 in position 3: ordinal not in range(128). Falling back to default strings.
+2025-06-13 14:17:42,536 - INFO - Performing initial WMS service status check.
+2025-06-13 14:17:42,537 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 14:17:42,588 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 14:17:42,588 - INFO - Clearing record form.
+2025-06-13 14:17:42,589 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 14:17:42,596 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 14:36:41,978 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 14:36:41,979 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 14:36:41,979 - INFO - Attempting to set up translations for language: zh
+2025-06-13 14:36:41,981 - ERROR - Failed to install translations for language 'zh': 'ascii' codec can't decode byte 0xe9 in position 3: ordinal not in range(128). Falling back to default strings.
+2025-06-13 14:36:42,115 - INFO - Performing initial WMS service status check.
+2025-06-13 14:36:42,116 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 14:36:42,280 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 14:36:42,281 - INFO - Clearing record form.
+2025-06-13 14:36:42,282 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 14:36:42,300 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 14:37:36,566 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 14:37:36,567 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 14:37:36,567 - INFO - Attempting to set up translations for language: zh
+2025-06-13 14:37:36,569 - ERROR - Failed to install translations for language 'zh': cannot access local variable 'os' where it is not associated with a value. Falling back to default strings.
+2025-06-13 14:37:36,727 - INFO - Performing initial WMS service status check.
+2025-06-13 14:37:36,728 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 14:37:36,816 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 14:37:36,816 - INFO - Clearing record form.
+2025-06-13 14:37:36,817 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 14:37:36,830 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 14:38:20,250 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 14:38:20,252 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 14:38:20,253 - INFO - Attempting to set up translations for language: zh
+2025-06-13 14:38:20,254 - ERROR - Failed to install translations for language 'zh': 'ascii' codec can't decode byte 0xe9 in position 3: ordinal not in range(128). Falling back to default strings.
+2025-06-13 14:38:20,413 - INFO - Performing initial WMS service status check.
+2025-06-13 14:38:20,414 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 14:38:20,508 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 14:38:20,508 - INFO - Clearing record form.
+2025-06-13 14:38:20,509 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 14:38:20,516 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 14:38:24,242 - INFO - Save configuration button clicked.
+2025-06-13 14:38:24,242 - INFO - Attempting to save configuration: Host='127.0.0.1', Port=8000, Language='en'
+2025-06-13 14:38:24,244 - INFO - ApiService base_url updated to: http://127.0.0.1:8000
+2025-06-13 14:38:24,245 - INFO - Configuration saved successfully to 'F:\2025PR\wms\wmsjules2\service_config.json': {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-13 14:38:24,246 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 14:38:24,247 - INFO - Language dropdown populated. Current selection: English (en)
+2025-06-13 14:38:25,284 - INFO - Configuration save handler completed successfully.
+2025-06-13 14:46:24,086 - WARNING - 翻译文件 F:\2025PR\wms\wmsjules2\translations\en.json 不存在
+2025-06-13 14:46:24,087 - INFO - 已加载 zh 翻译资源，共 100 条
+2025-06-13 14:46:24,088 - INFO - 尝试加载配置文件: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 14:46:24,088 - INFO - 配置加载完成: {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-13 14:46:24,089 - INFO - 设置应用语言为: en
+2025-06-13 14:46:24,089 - INFO - 语言已切换到: en (English)
+2025-06-13 14:46:24,090 - INFO - 语言设置成功: en
+2025-06-13 14:46:24,090 - WARNING - 未找到翻译: WMS Service Management
+2025-06-13 14:46:24,098 - WARNING - 未找到翻译: Service Control
+2025-06-13 14:46:24,102 - WARNING - 未找到翻译: Status: Unknown
+2025-06-13 14:46:24,108 - WARNING - 未找到翻译: Start Service
+2025-06-13 14:46:24,110 - WARNING - 未找到翻译: Stop Service
+2025-06-13 14:46:24,115 - WARNING - 未找到翻译: Restart Service
+2025-06-13 14:46:24,118 - WARNING - 未找到翻译: Configuration
+2025-06-13 14:46:24,120 - WARNING - 未找到翻译: Host IP
+2025-06-13 14:46:24,126 - WARNING - 未找到翻译: Port Number
+2025-06-13 14:46:24,135 - WARNING - 未找到翻译: Language
+2025-06-13 14:46:24,144 - WARNING - 未找到翻译: Save Configuration
+2025-06-13 14:46:24,150 - WARNING - 未找到翻译: Data Management
+2025-06-13 14:46:24,153 - WARNING - 未找到翻译: Record Details
+2025-06-13 14:46:24,157 - WARNING - 未找到翻译: LocationID
+2025-06-13 14:46:24,164 - WARNING - 未找到翻译: MaterialID
+2025-06-13 14:46:24,170 - WARNING - 未找到翻译: TrayNumber
+2025-06-13 14:46:24,178 - WARNING - 未找到翻译: ProcessID
+2025-06-13 14:46:24,187 - WARNING - 未找到翻译: TaskID
+2025-06-13 14:46:24,194 - WARNING - 未找到翻译: StatusNotes
+2025-06-13 14:46:24,197 - WARNING - 未找到翻译: Timestamp
+2025-06-13 14:46:24,208 - WARNING - 未找到翻译: Add Record
+2025-06-13 14:46:24,212 - WARNING - 未找到翻译: Update Record
+2025-06-13 14:46:24,216 - WARNING - 未找到翻译: Delete Record
+2025-06-13 14:46:24,220 - WARNING - 未找到翻译: Clear by Mtrl+Tray
+2025-06-13 14:46:24,223 - WARNING - 未找到翻译: Refresh
+2025-06-13 14:46:24,231 - WARNING - 未找到翻译: LocationID
+2025-06-13 14:46:24,232 - WARNING - 未找到翻译: MaterialID
+2025-06-13 14:46:24,232 - WARNING - 未找到翻译: TrayNumber
+2025-06-13 14:46:24,233 - WARNING - 未找到翻译: ProcessID
+2025-06-13 14:46:24,234 - WARNING - 未找到翻译: TaskID
+2025-06-13 14:46:24,235 - WARNING - 未找到翻译: StatusNotes
+2025-06-13 14:46:24,236 - WARNING - 未找到翻译: Timestamp
+2025-06-13 14:46:24,238 - WARNING - 未找到翻译: Performing initial WMS service status check.
+2025-06-13 14:46:24,239 - INFO - Performing initial WMS service status check.
+2025-06-13 14:46:24,239 - WARNING - 未找到翻译: Status: Stopped
+2025-06-13 14:46:24,240 - WARNING - 未找到翻译: Initial status check complete. Status: Stopped
+2025-06-13 14:46:24,240 - INFO - Initial status check complete. Status: Stopped
+2025-06-13 14:46:24,240 - WARNING - 未找到翻译: Auto-start task status check completed.
+2025-06-13 14:46:24,240 - INFO - Auto-start task status check completed.
+2025-06-13 14:46:24,241 - WARNING - 未找到翻译: Clearing record form.
+2025-06-13 14:46:24,241 - INFO - Clearing record form.
+2025-06-13 14:46:24,241 - INFO - 配置UI字段已从配置中填充
+2025-06-13 14:46:24,242 - WARNING - 未找到翻译: English
+2025-06-13 14:46:24,242 - WARNING - 未找到翻译: 中文 (Chinese)
+2025-06-13 14:46:24,242 - WARNING - 未找到翻译: English
+2025-06-13 14:46:24,243 - INFO - 语言下拉框已填充，当前选择: English (en)
+2025-06-13 14:50:55,774 - INFO - 已加载 en 翻译资源，共 64 条
+2025-06-13 14:50:55,775 - INFO - 已加载 zh 翻译资源，共 64 条
+2025-06-13 14:50:55,775 - INFO - 尝试加载配置文件: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 14:50:55,776 - INFO - 配置加载完成: {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-13 14:50:55,776 - INFO - 设置应用语言为: en
+2025-06-13 14:50:55,776 - INFO - 语言已切换到: en (English)
+2025-06-13 14:50:55,776 - INFO - 语言设置成功: en
+2025-06-13 14:50:55,843 - INFO - Performing initial WMS service status check.
+2025-06-13 14:50:55,844 - INFO - Initial status check complete. Status: Stopped
+2025-06-13 14:50:55,844 - INFO - Auto-start task status check completed.
+2025-06-13 14:50:55,844 - INFO - Clearing record form.
+2025-06-13 14:50:55,844 - INFO - 配置UI字段已从配置中填充
+2025-06-13 14:50:55,845 - INFO - 语言下拉框已填充，当前选择: English (en)
+2025-06-13 17:34:49,684 - INFO - 已加载 en 翻译资源，共 64 条
+2025-06-13 17:34:49,686 - INFO - 已加载 zh 翻译资源，共 64 条
+2025-06-13 17:34:49,687 - INFO - 尝试加载配置文件: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 17:34:49,688 - INFO - 配置加载完成: {'host': '127.0.0.1', 'port': 8000, 'language': 'en'}
+2025-06-13 17:34:49,689 - INFO - 设置应用语言为: en
+2025-06-13 17:34:49,690 - INFO - 语言已切换到: en (English)
+2025-06-13 17:34:49,691 - INFO - 语言设置成功: en
+2025-06-13 17:34:49,870 - INFO - Performing initial WMS service status check.
+2025-06-13 17:34:49,870 - INFO - Initial status check complete. Status: Stopped
+2025-06-13 17:34:49,871 - INFO - Auto-start task status check completed.
+2025-06-13 17:34:49,871 - INFO - Clearing record form.
+2025-06-13 17:34:49,872 - INFO - 配置UI字段已从配置中填充
+2025-06-13 17:34:49,873 - INFO - 语言下拉框已填充，当前选择: English (en)
+2025-06-13 17:34:52,682 - INFO - Save configuration button clicked.
+2025-06-13 17:34:52,683 - INFO - 尝试保存配置: Host='127.0.0.1', Port=8000, Language='zh'
+2025-06-13 17:34:52,684 - INFO - 配置保存成功: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 17:34:52,685 - INFO - API服务URL已更新: http://127.0.0.1:8000
+2025-06-13 17:34:52,686 - INFO - 语言已切换到: zh (中文 (Chinese))
+2025-06-13 17:34:52,686 - INFO - 语言已切换到: zh
+2025-06-13 17:34:52,687 - INFO - 配置UI字段已从配置中填充
+2025-06-13 17:34:52,693 - INFO - 语言下拉框已填充，当前选择: 中文 (zh)
+2025-06-13 17:34:58,111 - INFO - 已加载 en 翻译资源，共 64 条
+2025-06-13 17:34:58,112 - INFO - 已加载 zh 翻译资源，共 64 条
+2025-06-13 17:34:58,113 - INFO - 尝试加载配置文件: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 17:34:58,114 - INFO - 配置加载完成: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 17:34:58,115 - INFO - 设置应用语言为: zh
+2025-06-13 17:34:58,115 - INFO - 语言已切换到: zh (中文 (Chinese))
+2025-06-13 17:34:58,116 - INFO - 语言设置成功: zh
+2025-06-13 17:34:58,380 - INFO - 执行初始WMS服务状态检查。
+2025-06-13 17:34:58,390 - INFO - 初始状态检查完成。状态：已停止
+2025-06-13 17:34:58,391 - INFO - 自动启动任务状态检查完成。
+2025-06-13 17:34:58,392 - INFO - 清除记录表单。
+2025-06-13 17:34:58,392 - INFO - 配置UI字段已从配置中填充
+2025-06-13 17:34:58,393 - INFO - 语言下拉框已填充，当前选择: 中文 (zh)
+2025-06-13 17:35:10,960 - INFO - 启动服务按钮被点击。
+2025-06-13 17:35:18,443 - INFO - 启动服务按钮被点击。
+2025-06-13 17:35:20,679 - INFO - 停止服务按钮被点击。
+2025-06-13 17:35:22,479 - INFO - 重启服务按钮被点击。
+2025-06-13 17:35:24,650 - INFO - 启动服务按钮被点击。
+2025-06-13 18:28:59,954 - INFO - 已加载 en 翻译资源，共 64 条
+2025-06-13 18:28:59,955 - INFO - 已加载 zh 翻译资源，共 64 条
+2025-06-13 18:28:59,956 - INFO - 尝试加载配置文件: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 18:28:59,957 - INFO - 配置加载完成: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 18:28:59,957 - INFO - 设置应用语言为: zh
+2025-06-13 18:28:59,958 - INFO - 语言已切换到: zh (中文 (Chinese))
+2025-06-13 18:28:59,958 - INFO - 语言设置成功: zh
+2025-06-13 18:29:00,155 - INFO - 执行初始WMS服务状态检查。
+2025-06-13 18:29:00,165 - INFO - 初始状态检查完成。状态：已停止
+2025-06-13 18:29:00,166 - INFO - 自动启动任务状态检查完成。
+2025-06-13 18:29:00,167 - INFO - 清除记录表单。
+2025-06-13 18:29:00,168 - INFO - 配置UI字段已从配置中填充
+2025-06-13 18:29:00,170 - INFO - 语言下拉框已填充，当前选择: 中文 (zh)
+2025-06-13 18:29:02,416 - INFO - 停止服务按钮被点击。
+2025-06-13 18:29:04,317 - INFO - 启动服务按钮被点击。
+2025-06-13 18:29:12,262 - INFO - Attempting to load configuration from: F:\2025PR\wms\wmsjules2\service_config.json
+2025-06-13 18:29:12,263 - INFO - Configuration loaded/initialised to: {'host': '127.0.0.1', 'port': 8000, 'language': 'zh'}
+2025-06-13 18:29:12,264 - INFO - Attempting to set up translations for language: zh
+2025-06-13 18:29:12,265 - ERROR - Failed to install translations for language 'zh': 'ascii' codec can't decode byte 0xe9 in position 3: ordinal not in range(128). Falling back to default strings.
+2025-06-13 18:29:12,370 - INFO - Performing initial WMS service status check.
+2025-06-13 18:29:12,371 - INFO - Initial status check complete. Status: Status: Stopped
+2025-06-13 18:29:12,419 - INFO - Auto-start task 'WMSServiceAutoStart' is disabled or not found.
+2025-06-13 18:29:12,420 - INFO - Clearing record form.
+2025-06-13 18:29:12,420 - INFO - Configuration UI fields populated from self.service_config.
+2025-06-13 18:29:12,428 - INFO - Language dropdown populated. Current selection: ���� (Chinese) (zh)
+2025-06-13 18:29:15,476 - INFO - Attempting to start WMS service...
+2025-06-13 18:29:15,477 - INFO - Executing command: C:\Users\CCDQ\AppData\Local\Programs\Python\Python311\python.exe -m uvicorn main:app --host=127.0.0.1 --port=8000
+2025-06-13 18:29:15,482 - INFO - Service started successfully with PID: 17328.
+2025-06-13 18:29:17,387 - INFO - Attempting to stop WMS service...
+2025-06-13 18:29:17,388 - INFO - Stopping process with PID: 17328 using taskkill.
+2025-06-13 18:29:17,771 - INFO - Service stopped successfully via taskkill.

@@ -156,9 +156,16 @@ class ServiceManagerApp:
         self.root = root
         self.logger = logging.getLogger(__name__)
         self.config_file_path = os.path.abspath(CONFIG_FILE_NAME)
+        
+        # Define supported languages before loading config
+        self.supported_languages = {"en": "English", "zh": "中文 (Chinese)"}
+        
         self.service_config = self._load_config()
 
         self.setup_translations() # Setup translations early
+        
+        # Update supported_languages with translated names after translations are set up
+        self.supported_languages = {"en": _("English"), "zh": _("中文 (Chinese)")}
 
         self.root.title(_(APP_NAME)) # Now _ should be defined by gettext or fallback
         self.root.geometry("600x800")
@@ -167,8 +174,6 @@ class ServiceManagerApp:
         self.current_api_base_url = f"http://{self.service_config['host']}:{self.service_config['port']}"
         self.api_service = ApiService(base_url=self.current_api_base_url)
         self.selected_location_id_for_update = None
-
-        self.supported_languages = {"en": _("English"), "zh": _("中文 (Chinese)")}
 
         self._setup_ui(root)
 
@@ -184,6 +189,19 @@ class ServiceManagerApp:
         self.logger.info(f"Attempting to set up translations for language: {lang_code}")
         try:
             localedir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'locale')
+            # Set locale and encoding to handle UTF-8 properly
+            import locale
+            try:
+                # Set environment variables for UTF-8 encoding
+                os.environ['PYTHONIOENCODING'] = 'utf-8'
+                locale.setlocale(locale.LC_ALL, '')
+            except:
+                try:
+                    # Fallback for Windows
+                    locale.setlocale(locale.LC_ALL, 'C.UTF-8')
+                except:
+                    pass  # Ignore locale setting errors
+            
             lang = gettext.translation('management_app', localedir=localedir, languages=[lang_code], fallback=True)
             lang.install()
             # Verify by translating a known string immediately
@@ -261,25 +279,25 @@ class ServiceManagerApp:
         ttk.Label(self.record_details_frame, text=_("LocationID:")).grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
         self.location_id_entry = ttk.Entry(self.record_details_frame, state="readonly")
         self.location_id_entry.grid(row=0, column=1, padx=5, pady=5, sticky=tk.EW)
-        ttk.Label(record_details_frame, text=_("MaterialID:")).grid(row=1, column=0, padx=5, pady=5, sticky=tk.W)
-        self.material_id_entry = ttk.Entry(record_details_frame)
+        ttk.Label(self.record_details_frame, text=_("MaterialID:")).grid(row=1, column=0, padx=5, pady=5, sticky=tk.W)
+        self.material_id_entry = ttk.Entry(self.record_details_frame)
         self.material_id_entry.grid(row=1, column=1, padx=5, pady=5, sticky=tk.EW)
-        ttk.Label(record_details_frame, text=_("TrayNumber:")).grid(row=2, column=0, padx=5, pady=5, sticky=tk.W)
-        self.tray_number_entry = ttk.Entry(record_details_frame)
+        ttk.Label(self.record_details_frame, text=_("TrayNumber:")).grid(row=2, column=0, padx=5, pady=5, sticky=tk.W)
+        self.tray_number_entry = ttk.Entry(self.record_details_frame)
         self.tray_number_entry.grid(row=2, column=1, padx=5, pady=5, sticky=tk.EW)
-        ttk.Label(record_details_frame, text=_("ProcessID:")).grid(row=3, column=0, padx=5, pady=5, sticky=tk.W)
-        self.process_id_entry = ttk.Entry(record_details_frame)
+        ttk.Label(self.record_details_frame, text=_("ProcessID:")).grid(row=3, column=0, padx=5, pady=5, sticky=tk.W)
+        self.process_id_entry = ttk.Entry(self.record_details_frame)
         self.process_id_entry.grid(row=3, column=1, padx=5, pady=5, sticky=tk.EW)
-        ttk.Label(record_details_frame, text=_("TaskID:")).grid(row=4, column=0, padx=5, pady=5, sticky=tk.W)
-        self.task_id_entry = ttk.Entry(record_details_frame)
+        ttk.Label(self.record_details_frame, text=_("TaskID:")).grid(row=4, column=0, padx=5, pady=5, sticky=tk.W)
+        self.task_id_entry = ttk.Entry(self.record_details_frame)
         self.task_id_entry.grid(row=4, column=1, padx=5, pady=5, sticky=tk.EW)
-        ttk.Label(record_details_frame, text=_("StatusNotes:")).grid(row=5, column=0, padx=5, pady=5, sticky=tk.NW)
-        self.status_notes_text = tk.Text(record_details_frame, height=3, width=30)
+        ttk.Label(self.record_details_frame, text=_("StatusNotes:")).grid(row=5, column=0, padx=5, pady=5, sticky=tk.NW)
+        self.status_notes_text = tk.Text(self.record_details_frame, height=3, width=30)
         self.status_notes_text.grid(row=5, column=1, padx=5, pady=5, sticky=tk.EW)
-        ttk.Label(record_details_frame, text=_("Timestamp:")).grid(row=6, column=0, padx=5, pady=5, sticky=tk.W)
-        self.timestamp_val_label = ttk.Label(record_details_frame, text="")
+        ttk.Label(self.record_details_frame, text=_("Timestamp:")).grid(row=6, column=0, padx=5, pady=5, sticky=tk.W)
+        self.timestamp_val_label = ttk.Label(self.record_details_frame, text="")
         self.timestamp_val_label.grid(row=6, column=1, padx=5, pady=5, sticky=tk.W)
-        record_details_frame.columnconfigure(1, weight=1)
+        self.record_details_frame.columnconfigure(1, weight=1)
 
         record_action_frame = ttk.Frame(data_management_frame)
         record_action_frame.pack(pady=5, padx=10, fill=tk.X)
@@ -296,7 +314,7 @@ class ServiceManagerApp:
         ttk.Label(self.clear_by_criteria_frame, text=_("MaterialID for Clear:")).grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
         self.delete_material_id_entry = ttk.Entry(self.clear_by_criteria_frame)
         self.delete_material_id_entry.grid(row=0, column=1, padx=5, pady=5, sticky=tk.EW)
-        ttk.Label(clear_criteria_frame, text=_("TrayNumber for Clear:")).grid(row=1, column=0, padx=5, pady=5, sticky=tk.W)
+        ttk.Label(self.clear_by_criteria_frame, text=_("TrayNumber for Clear:")).grid(row=1, column=0, padx=5, pady=5, sticky=tk.W)
         self.delete_tray_number_entry = ttk.Entry(self.clear_by_criteria_frame)
         self.delete_tray_number_entry.grid(row=1, column=1, padx=5, pady=5, sticky=tk.EW)
         self.clear_by_material_tray_button = ttk.Button(self.clear_by_criteria_frame, text=_("Clear by Mtrl+Tray"), command=self._clear_record_by_material_tray_handler)
@@ -941,6 +959,3 @@ if __name__ == "__main__":
 
     if app.service_pid and os.path.exists(PID_FILE):
         app._log_action("Management app closing.")
-        pass
-
-[end of management_app.py]
