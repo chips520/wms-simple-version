@@ -59,8 +59,9 @@
   "Clear by material+tray functionality not implemented yet.": "Clear by material+tray functionality not implemented yet.",
   "Refresh functionality not implemented yet.": "Refresh functionality not implemented yet.",
   "English": "English",
-  "中文 (Chinese)": "Chinese",
   "Connection Error: {error}": "Connection Error: {error}",
   "HTTP Error {status}: {reason}": "HTTP Error {status}: {reason}",
-  "Invalid JSON response": "Invalid JSON response"
+  "Invalid JSON response": "Invalid JSON response",
+  "N/A": "N/A",
+  "中文 (Chinese)": "Chinese"
 }

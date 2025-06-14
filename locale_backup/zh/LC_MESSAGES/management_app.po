@@ -1,19 +1,15 @@
-# Simplified POT file for WMS Management App
-#
 msgid ""
-msgstr "[zh]
+msgstr ""
 "Project-Id-Version: management_app 1.0\n"
-"POT-Creation-Date: 2024-07-01 12:00+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically Generated\n"
-"Language-Team: None\n"
+"POT-Creation-Date: 2024-07-03 10:00:00+0000\n"
+"PO-Revision-Date: 2024-07-03 10:00:00+0000\n"
+"Last-Translator: User\n"
+"Language-Team: User\n"
 "Language: zh\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Manual Subtask\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "WMS Service Management"
 msgstr "WMS服务管理"
@@ -39,14 +35,17 @@ msgstr "启用自动启动"
 msgid "Disable Auto-start"
 msgstr "禁用自动启动"
 
-msgid "Service Host/Port Configuration"
-msgstr "服务主机/端口配置"
+msgid "Configuration"
+msgstr "配置"
 
-msgid "Host IP Address:"
-msgstr "主机IP地址："
+msgid "Host IP"
+msgstr "主机IP"
 
-msgid "Port Number:"
-msgstr "端口号："
+msgid "Port Number"
+msgstr "端口号"
+
+msgid "Language"
+msgstr "语言"
 
 msgid "Save Configuration"
 msgstr "保存配置"
@@ -57,275 +56,149 @@ msgstr "数据管理"
 msgid "Record Details"
 msgstr "记录详情"
 
-msgid "LocationID:"
-msgstr "位置ID："
-
-msgid "MaterialID:"
-msgstr "物料ID："
-
-msgid "TrayNumber:"
-msgstr "托盘号："
-
-msgid "ProcessID:"
-msgstr "工艺ID："
-
-msgid "TaskID:"
-msgstr "任务ID："
-
-msgid "StatusNotes:"
-msgstr "状态备注："
-
-msgid "Timestamp:"
-msgstr "时间戳："
-
-msgid "Add Record"
-msgstr "添加记录"
-
-msgid "Update Selected Record"
-msgstr "更新选中记录"
-
-msgid "Clear Form"
-msgstr "清空表单"
-
-msgid "Query Locations"
-msgstr "查询位置"
-
-msgid "Query by MaterialID:"
-msgstr "按物料ID查询："
-
-msgid "Query by TrayNumber:"
-msgstr "按托盘号查询："
-
-msgid "Search"
-msgstr "搜索"
-
-msgid "Query Results"
-msgstr "查询结果"
-
-msgid "Loc. ID"
+msgid "LocationID"
 msgstr "位置ID"
 
-msgid "Material ID"
+msgid "MaterialID"
 msgstr "物料ID"
 
-msgid "Tray No."
-msgstr "托盘号"
+msgid "TrayNumber"
+msgstr "托盘编号"
 
-# Timestamp is also a column header, reusing
-# msgid "Timestamp"
-# msgstr ""
+msgid "ProcessID"
+msgstr "工序ID"
 
-msgid "Process ID"
-msgstr "工艺ID"
-
-msgid "Task ID"
+msgid "TaskID"
 msgstr "任务ID"
 
-msgid "Status Notes"
+msgid "StatusNotes"
 msgstr "状态备注"
 
-msgid "Clear Location by Criteria"
-msgstr "按条件清除位置"
+msgid "Timestamp"
+msgstr "时间戳"
 
-msgid "MaterialID for Clear:"
-msgstr "清除用物料ID："
+msgid "Add Record"
+msgstr "新增记录"
 
-msgid "TrayNumber for Clear:"
-msgstr "清除用托盘号："
+msgid "Update Record"
+msgstr "更新记录"
+
+msgid "Delete Record"
+msgstr "删除记录"
 
 msgid "Clear by Mtrl+Tray"
 msgstr "按物料+托盘清除"
 
-msgid "Note: Clears record's MaterialID. Requires both MaterialID and TrayNumber."
-msgstr "注意：清除记录的物料ID。需要同时提供物料ID和托盘号。"
-
-# Messagebox Titles
-msgid "Service Info"
-msgstr "服务信息"
+msgid "Refresh"
+msgstr "刷新"
 
 msgid "Error"
 msgstr "错误"
 
-msgid "Service Control Error"
-msgstr "服务控制错误"
-
-msgid "Auto-start Error"
-msgstr "自动启动错误"
-
-msgid "Auto-start Info"
-msgstr "自动启动信息"
-
-msgid "Validation Error"
-msgstr "验证错误"
-
 msgid "Success"
 msgstr "成功"
 
-msgid "API Error"
-msgstr "API错误"
+msgid "Warning"
+msgstr "警告"
 
-msgid "Confirm Clear"
-msgstr "确认清除"
+msgid "Info"
+msgstr "提示"
 
-msgid "Search Results"
-msgstr "搜索结果"
+msgid "Host IP cannot be empty"
+msgstr "主机IP不能为空"
 
-msgid "Configuration Saved"
-msgstr "配置已保存"
+msgid "Port must be a number between 1 and 65535"
+msgstr "端口必须是1到65535之间的数字"
 
-msgid "Save Error"
-msgstr "保存错误"
+msgid "Configuration saved successfully. Please restart the application to see language changes."
+msgstr "配置保存成功，请重启应用以应用语言更改。"
 
-# Messagebox Messages (examples, especially formatted ones)
-msgid "Status: Running (PID: {pid_val})"
-msgstr "状态：运行中 (PID: {pid_val})"
+msgid "Configuration saved but language change failed"
+msgstr "配置已保存，但语言切换失败"
+
+msgid "Failed to save configuration: {error}"
+msgstr "配置保存失败：{error}"
 
 msgid "Status: Stopped"
 msgstr "状态：已停止"
 
-msgid "Status: Error - {python_file} not found"
-msgstr "状态：错误 - 未找到 {python_file}"
+msgid "Status: Running"
+msgstr "状态：运行中"
 
-msgid "Status: Error starting"
-msgstr "状态：启动错误"
+msgid "Performing initial WMS service status check."
+msgstr "正在执行WMS服务初始状态检查。"
 
-msgid "Status: Stopped (Stale PID)"
-msgstr "状态：已停止 (过期PID)"
+msgid "Initial status check complete. Status: Stopped"
+msgstr "初始状态检查完成。状态：已停止"
 
-msgid "Status: Error (Invalid PID file)"
-msgstr "状态：错误 (无效PID文件)"
+msgid "Auto-start task status check completed."
+msgstr "自动启动任务状态检查完成。"
 
-msgid "Status: Stopped (PID file was empty)"
-msgstr "状态：已停止 (PID文件为空)"
+msgid "Clearing record form."
+msgstr "正在清除记录表单。"
 
-msgid "Status: Error checking PID"
-msgstr "状态：检查PID错误"
+msgid "Start service button clicked."
+msgstr "点击了启动服务按钮。"
 
-msgid "Service is already running."
-msgstr "服务已在运行。"
+msgid "Stop service button clicked."
+msgstr "点击了停止服务按钮。"
 
-msgid "{python_file} not found. Cannot start service."
-msgstr "未找到 {python_file}。无法启动服务。"
+msgid "Restart service button clicked."
+msgstr "点击了重启服务按钮。"
 
-msgid "WMS Service started successfully."
-msgstr "WMS服务启动成功。"
+msgid "Add record button clicked."
+msgstr "点击了新增记录按钮。"
 
-msgid "Failed to start WMS service: {error}"
-msgstr "启动WMS服务失败：{error}"
+msgid "Update record button clicked."
+msgstr "点击了更新记录按钮。"
 
-msgid "Service PID not found, cannot stop if not started by this manager instance or PID file is missing/corrupt."
-msgstr "未找到服务PID，如果服务不是由此管理器实例启动或PID文件丢失/损坏，则无法停止。"
+msgid "Delete record button clicked."
+msgstr "点击了删除记录按钮。"
 
-msgid "Service is not recorded as running (empty PID file)."
-msgstr "服务未记录为运行状态（PID文件为空）。"
+msgid "Clear by Mtrl+Tray button clicked."
+msgstr "点击了按物料+托盘清除按钮。"
 
-msgid "Service PID file is corrupt or unreadable."
-msgstr "服务PID文件损坏或不可读。"
+msgid "Refresh button clicked."
+msgstr "点击了刷新按钮。"
 
-msgid "Service is not recorded as running."
-msgstr "服务未记录为运行状态。"
+msgid "Save configuration button clicked."
+msgstr "点击了保存配置按钮。"
 
-msgid "No valid PID found to stop the service."
-msgstr "未找到有效PID来停止服务。"
+msgid "Service start functionality not implemented yet."
+msgstr "启动服务功能尚未实现。"
 
-msgid "WMS Service stopped successfully."
-msgstr "WMS服务停止成功。"
+msgid "Service stop functionality not implemented yet."
+msgstr "停止服务功能尚未实现。"
 
-msgid "Status: Stopped (taskkill error but process gone)"
-msgstr "状态：已停止 (taskkill错误但进程已消失)"
+msgid "Service restart functionality not implemented yet."
+msgstr "重启服务功能尚未实现。"
 
-msgid "Failed to stop WMS service with taskkill: {error}. It might still be running."
-msgstr "使用taskkill停止WMS服务失败：{error}。服务可能仍在运行。"
+msgid "Add record functionality not implemented yet."
+msgstr "新增记录功能尚未实现。"
 
-msgid "Status: Error stopping"
-msgstr "状态：停止错误"
+msgid "Update record functionality not implemented yet."
+msgstr "更新记录功能尚未实现。"
 
-msgid "An unexpected error occurred while stopping WMS service: {error}"
-msgstr "停止WMS服务时发生意外错误：{error}"
+msgid "Delete record functionality not implemented yet."
+msgstr "删除记录功能尚未实现。"
 
-msgid "Task Scheduler command (schtasks) not found. Is this a Windows environment?"
-msgstr "未找到任务计划程序命令(schtasks)。这是Windows环境吗？"
+msgid "Clear by material+tray functionality not implemented yet."
+msgstr "按物料+托盘清除功能尚未实现。"
 
-msgid "Failed to create helper batch script for auto-start: {error}"
-msgstr "创建自动启动辅助批处理脚本失败：{error}"
+msgid "Refresh functionality not implemented yet."
+msgstr "刷新功能尚未实现。"
 
-msgid "Auto-start enabled for WMS service via Task '{task_name}'."
-msgstr "已通过任务'{task_name}'为WMS服务启用自动启动。"
+msgid "English"
+msgstr "英文"
 
-msgid "Failed to enable auto-start (schtasks error): {error}"
-msgstr "启用自动启动失败(schtasks错误)：{error}"
-
-msgid "An unexpected error occurred while enabling auto-start: {error}"
-msgstr "启用自动启动时发生意外错误：{error}"
-
-msgid "Auto-start disabled for WMS service."
-msgstr "已禁用WMS服务的自动启动。"
-
-msgid "Auto-start task '{task_name}' was not found (already disabled)."
-msgstr "未找到自动启动任务'{task_name}'（已禁用）。"
-
-msgid "Failed to disable auto-start (schtasks error): {error}"
-msgstr "禁用自动启动失败(schtasks错误)：{error}"
-
-msgid "An unexpected error occurred while disabling auto-start: {error}"
-msgstr "禁用自动启动时发生意外错误：{error}"
-
-msgid "Host IP address cannot be empty."
-msgstr "主机IP地址不能为空。"
-
-msgid "Port number must be an integer."
-msgstr "端口号必须是整数。"
-
-msgid "Port number must be between 1 and 65535."
-msgstr "端口号必须在1到65535之间。"
-
-msgid "Configuration has been saved successfully.\n\nIf the WMS service is currently running, you may need to restart it for changes to its listening address or port to take full effect."
-msgstr "配置已成功保存。\n\n如果WMS服务当前正在运行，您可能需要重启它以使监听地址或端口的更改完全生效。"
-
-msgid "Failed to save configuration. Please check the logs for more details."
-msgstr "保存配置失败。请检查日志以获取更多详细信息。"
-
-msgid "Record added successfully. LocationID: {loc_id}"
-msgstr "记录添加成功。位置ID：{loc_id}"
-
-msgid "Failed to add record: {error}"
-msgstr "添加记录失败：{error}"
-
-msgid "No record selected for update. LocationID is missing."
-msgstr "未选择要更新的记录。缺少位置ID。"
-
-msgid "Record {loc_id} updated successfully."
-msgstr "记录 {loc_id} 更新成功。"
-
-msgid "Failed to update record {loc_id}: {error}"
-msgstr "更新记录 {loc_id} 失败：{error}"
-
-msgid "Found {count} record(s)."
-msgstr "找到 {count} 条记录。"
-
-msgid "Received unexpected data format from API."
-msgstr "从API接收到意外的数据格式。"
-
-msgid "Failed to search records: {error}"
-msgstr "搜索记录失败：{error}"
-
-msgid "Both MaterialID and TrayNumber are required to clear a record."
-msgstr "清除记录需要同时提供物料ID和托盘号。"
-
-msgid "Are you sure you want to clear the record for Material ID: '{mat_id}' and Tray Number: '{tray_num}'?\nThis will mark the location as empty."
-msgstr "您确定要清除物料ID：'{mat_id}' 和托盘号：'{tray_num}' 的记录吗？\n这将把该位置标记为空。"
-
-msgid "Record for MaterialID '{mat_id}', TrayNumber '{tray_num}' (LocationID: {loc_id}) cleared successfully."
-msgstr "物料ID '{mat_id}'，托盘号 '{tray_num}' (位置ID: {loc_id}) 的记录清除成功。"
-
-msgid "Failed to clear record for MaterialID '{mat_id}', TrayNumber '{tray_num}': {error}"
-msgstr "清除物料ID '{mat_id}'，托盘号 '{tray_num}' 的记录失败：{error}"
+msgid "中文 (Chinese)"
+msgstr "中文"
 
 msgid "Connection Error: {error}"
-msgstr "连接错误: {error}"
+msgstr "连接错误：{error}"
 
 msgid "HTTP Error {status}: {reason}"
-msgstr "HTTP错误 {status}: {reason}"
+msgstr "HTTP错误 {status}：{reason}"
 
 msgid "Invalid JSON response"
 msgstr "无效的JSON响应"
